@@ -1,0 +1,11 @@
+namePrefix: staging-
+namespace: staging-wonder
+commonLabels:
+  variant: staging
+  org: acmeCorporation
+commonAnnotations:
+  note: Wonder, I am staging!
+bases:
+  - ../../../base
+patchesStrategicMerge:
+  - map.yaml
