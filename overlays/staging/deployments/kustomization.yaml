@@ -1,0 +1,9 @@
+bases:
+  - wonder
+
+patchesJson6902:
+  - target:
+      version: v1
+      kind: ConfigMap
+      name: the-map
+    path: hello/app_deployment.yaml

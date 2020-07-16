@@ -6,3 +6,4 @@ data:
   altGreeting: "Good Morning!"
   enableRisky: "false"
   NAMESPACE: hello
+  deployments: []

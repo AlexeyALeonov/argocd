@@ -6,6 +6,12 @@ commonLabels:
 commonAnnotations:
   note: Hello, I am staging!
 bases:
-- ../../../base
+  - ../../../../base
 patchesStrategicMerge:
-- map.yaml
+  - map.yaml
+patchesJson6902:
+  - target:
+      version: v1
+      kind: ConfigMap
+      name: the-map
+    path: app_deployment.yaml
