@@ -11,8 +11,8 @@ resources:
 
 vars:
 - fieldref:
-    fieldPath: data.NAMESPACE
-  name: NAMESPACE
+    fieldPath: data.CREATE_NAMESPACE
+  name: CREATE_NAMESPACE
   objref:
     apiVersion: v1
     kind: ConfigMap

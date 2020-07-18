@@ -6,4 +6,4 @@ metadata:
 data:
   altGreeting: "Do you wonder to try to figure out, why a pineapple?"
   enableRisky: "true"
-  NAMESPACE: to-try
+  CREATE_NAMESPACE: to-try

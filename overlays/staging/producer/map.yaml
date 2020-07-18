@@ -5,4 +5,4 @@ metadata:
 data:
   altGreeting: "Have a pineapple!"
   enableRisky: "true"
-  NAMESPACE: producer
+  CREATE_NAMESPACE: producer

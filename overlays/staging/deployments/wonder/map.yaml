@@ -5,4 +5,4 @@ metadata:
 data:
   altGreeting: "Do you wonder, why a pineapple?"
   enableRisky: "true"
-  NAMESPACE: wonder
+  CREATE_NAMESPACE: wonder

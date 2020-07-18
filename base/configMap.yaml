@@ -5,5 +5,5 @@ metadata:
 data:
   altGreeting: "Good Morning!"
   enableRisky: "false"
-  NAMESPACE: hello
+  CREATE_NAMESPACE: hello
   deployments: []
