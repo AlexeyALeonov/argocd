@@ -1,14 +1,12 @@
-# Example configuration for the webserver
-# at https://github.com/monopole/hello
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 commonLabels:
   app: hello
-
 resources:
 - api.yaml
 - configMap.yaml
 - namespace.yaml
 - sealedsecret_databases.json
-
 vars:
 - fieldref:
     fieldPath: data.CREATE_NAMESPACE
@@ -17,9 +15,7 @@ vars:
     apiVersion: v1
     kind: ConfigMap
     name: app-config
-
+configMapGenerator:
+- name: deployments
 configurations:
 - config.yaml
-
-configMapGenerator:
-  - name: deployments

@@ -1,11 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 namespace: staging-hello-to-try
 nameSuffix: -to-try
 commonAnnotations:
   note: Wonder to try, I am staging!
-
 bases:
-  - ../deployments/to-try
-  - ../base/ui-nginx
-
+- ../deployments/to-try
+- ../base/ui
+- ../base/nginx
 patchesStrategicMerge:
-  - map.yaml
+- map.yaml
