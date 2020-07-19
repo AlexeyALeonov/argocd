@@ -2,8 +2,8 @@ bases:
   - hello
 
 patchesStrategicMerge:
-  - to-try/sealedsecret_databases.json
-  - wonder/sealedsecret_databases.json
+  - to-try/test_dev_3_ss.json
+  - wonder/test3_dev2_ss.json
 
 configMapGenerator:
   - name: deployments
