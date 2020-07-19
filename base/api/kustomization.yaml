@@ -15,6 +15,13 @@ vars:
     apiVersion: v1
     kind: ConfigMap
     name: app-config
+- fieldref:
+    fieldPath: metadata.name
+  name: API_LOCATION
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: api
 configMapGenerator:
 - name: deployments
 configurations:
