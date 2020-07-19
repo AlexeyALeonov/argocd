@@ -1,7 +1,0 @@
-namespace: staging-producer
-
-bases:
-- ../deployments
-
-patchesStrategicMerge:
-- map.yaml

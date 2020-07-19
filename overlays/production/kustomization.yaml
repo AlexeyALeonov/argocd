@@ -1,20 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 namePrefix: production-
 namespace: production-hello
 commonLabels:
-  variant: production
   org: acmeCorporation
+  variant: production
 commonAnnotations:
   note: Hello, I am production!
 bases:
-- ../../base
-
+- ../../base/api
+- ../../base/ui
+- ../../base/nginx
 patchesStrategicMerge:
 - deployment.yaml
+- config.yaml
 - sealedsecret_databases.json
-
 configMapGenerator:
-  - name: deployments
-    behavior: replace
-    files:
-      - customer1.json
-      - customer2.json
+- behavior: replace
+  files:
+  - customer1.json
+  - customer2.json
+  name: deployments

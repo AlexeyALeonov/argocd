@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: deployments
+data:
+  test3_dev2.json: null
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: databases
+spec:
+  encryptedData:
+    TEST3_DEV2_PWD: null
+    TEST3_DEV2_UID: null

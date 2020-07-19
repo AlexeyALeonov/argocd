@@ -1,0 +1,7 @@
+varReference:
+- path: spec/rules/0/host
+  kind: Ingress
+- path: data/API_LOCATION
+  kind: ConfigMap
+- path: data/UI_LOCATION
+  kind: ConfigMap
