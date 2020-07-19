@@ -4,9 +4,9 @@ namespace: staging-hello-to-try
 nameSuffix: -to-try
 commonAnnotations:
   note: Wonder to try, I am staging!
-bases:
+patchesStrategicMerge:
+- map.yaml
+resources:
 - ../deployments/to-try
 - ../base/ui
 - ../base/nginx
-patchesStrategicMerge:
-- map.yaml

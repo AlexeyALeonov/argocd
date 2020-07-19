@@ -1,7 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-bases:
-- hello
 patchesStrategicMerge:
 - to-try/test_dev_3_ss.json
 - wonder/test3_dev2_ss.json
@@ -11,3 +9,5 @@ configMapGenerator:
   - to-try/test_dev_3.json
   - wonder/test3_dev2.json
   name: deployments
+resources:
+- hello

@@ -4,9 +4,9 @@ namespace: staging-hello-wonder
 nameSuffix: -wonder
 commonAnnotations:
   note: Wonder, I am staging!
-bases:
+patchesStrategicMerge:
+- map.yaml
+resources:
 - ../deployments/wonder
 - ../base/ui
 - ../base/nginx
-patchesStrategicMerge:
-- map.yaml

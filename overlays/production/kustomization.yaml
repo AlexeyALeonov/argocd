@@ -7,10 +7,6 @@ commonLabels:
   variant: production
 commonAnnotations:
   note: Hello, I am production!
-bases:
-- ../../base/api
-- ../../base/ui
-- ../../base/nginx
 patchesStrategicMerge:
 - deployment.yaml
 - config.yaml
@@ -21,3 +17,7 @@ configMapGenerator:
   - customer1.json
   - customer2.json
   name: deployments
+resources:
+- ../../base/api
+- ../../base/ui
+- ../../base/nginx
