@@ -13,7 +13,7 @@ spec:
         deployment: hello
     spec:
       initContainers:
-        - name: inject-secrets
+        - name: inject-databases
           image: alpine
           envFrom:
             - secretRef:
@@ -28,8 +28,8 @@ spec:
             - -c
           args:
             - |
-              apk add gettext
-              for f in `find /input -type f`; do envsubst <$f >/output/$(basename $f); done
+              apk add gettext jq
+              jq '.' -s /input/*.json | envsubst >/output/deployments.json
       containers:
         - name: the-container
           image: nginx

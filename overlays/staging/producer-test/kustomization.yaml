@@ -1,4 +1,4 @@
-namespace: staging-producer
+namespace: staging-producer-test
 
 bases:
 - ../deployments

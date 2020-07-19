@@ -1,3 +1,9 @@
 varReference:
 - path: metadata/name
   kind: Namespace
+
+nameReference:
+- kind: SealedSecret
+  fieldSpecs:
+  - path: spec/template/metadata/name
+    kind: SealedSecret

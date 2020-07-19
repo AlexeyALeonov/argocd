@@ -1,0 +1,7 @@
+namespace: staging-producer-test3
+
+bases:
+- ../deployments/wonder
+
+patchesStrategicMerge:
+- map.yaml
