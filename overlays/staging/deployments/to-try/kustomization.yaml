@@ -1,0 +1,17 @@
+namePrefix: staging-
+namespace: staging-to-try
+commonLabels:
+  variant: staging
+  org: acmeCorporation
+commonAnnotations:
+  note: Wonder to try, I am staging!
+bases:
+  - ../../../../base
+patchesStrategicMerge:
+  - map.yaml
+patchesJson6902:
+  - target:
+      version: v1
+      kind: ConfigMap
+      name: the-map
+    path: app_deployment.yaml

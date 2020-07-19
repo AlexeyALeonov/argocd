@@ -1,0 +1,6 @@
+- op: add
+  path: /data/deployments/0
+  value:
+    UID: a90d8d5c-4cad-4752-94d2-2a2fd99d0ddc
+    Database: dev_3
+    Server: test
