@@ -4,3 +4,11 @@ commonLabels:
   app: hello
 resources:
 - ui.yaml
+vars:
+- fieldref:
+    fieldPath: metadata.name
+  name: UI_LOCATION
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: ui

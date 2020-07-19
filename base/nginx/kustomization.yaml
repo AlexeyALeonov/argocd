@@ -13,19 +13,5 @@ vars:
     apiVersion: v1
     kind: ConfigMap
     name: nginx-config
-- fieldref:
-    fieldPath: metadata.name
-  name: API_LOCATION
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: api
-- fieldref:
-    fieldPath: metadata.name
-  name: UI_LOCATION
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: ui
 configurations:
 - config.yaml
