@@ -8,6 +8,7 @@ resources:
 - service.yaml
 - configMap.yaml
 - namespace.yaml
+- sealedsecret_databases.json
 
 vars:
 - fieldref:
@@ -17,5 +18,9 @@ vars:
     apiVersion: v1
     kind: ConfigMap
     name: the-map
+
 configurations:
 - config.yaml
+
+configMapGenerator:
+  - name: deployments

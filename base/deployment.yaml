@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: the-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       deployment: hello
@@ -12,22 +12,46 @@ spec:
       labels:
         deployment: hello
     spec:
+      initContainers:
+        - name: inject-secrets
+          image: alpine
+          envFrom:
+            - secretRef:
+                name: databases
+          volumeMounts:
+            - mountPath: /input
+              name: config-template-volume
+            - mountPath: /output
+              name: app-deployments-volume
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - |
+              apk add gettext
+              for f in `find /input -type f`; do envsubst <$f >/output/$(basename $f); done
       containers:
-      - name: the-container
-        image: monopole/hello:1
-        command: ["/hello",
-                  "--port=8080",
-                  "--enableRiskyFeature=$(ENABLE_RISKY)"]
-        ports:
-        - containerPort: 8080
-        env:
-        - name: ALT_GREETING
-          valueFrom:
-            configMapKeyRef:
-              name: the-map
-              key: altGreeting
-        - name: ENABLE_RISKY
-          valueFrom:
-            configMapKeyRef:
-              name: the-map
-              key: enableRisky
+        - name: the-container
+          image: nginx
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ALT_GREETING
+              valueFrom:
+                configMapKeyRef:
+                  name: the-map
+                  key: altGreeting
+            - name: ENABLE_RISKY
+              valueFrom:
+                configMapKeyRef:
+                  name: the-map
+                  key: enableRisky
+          volumeMounts:
+            - name: app-deployments-volume
+              mountPath: /etc/deployments
+      volumes:
+        - name: app-deployments-volume
+          emptyDir: {}
+        - name: config-template-volume
+          configMap:
+            name: deployments

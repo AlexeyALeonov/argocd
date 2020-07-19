@@ -1,0 +1,9 @@
+namespace: staging-wonder
+commonAnnotations:
+  note: Wonder, I am staging!
+
+bases:
+  - ../deployments/wonder
+
+patchesStrategicMerge:
+  - map.yaml

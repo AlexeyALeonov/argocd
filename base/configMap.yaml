@@ -6,4 +6,3 @@ data:
   altGreeting: "Good Morning!"
   enableRisky: "false"
   CREATE_NAMESPACE: hello
-  deployments: []

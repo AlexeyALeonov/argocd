@@ -7,5 +7,14 @@ commonAnnotations:
   note: Hello, I am production!
 bases:
 - ../../base
+
 patchesStrategicMerge:
 - deployment.yaml
+- sealedsecret_databases.json
+
+configMapGenerator:
+  - name: deployments
+    behavior: replace
+    files:
+      - customer1.json
+      - customer2.json

@@ -1,0 +1,9 @@
+namespace: staging-to-try
+commonAnnotations:
+  note: Wonder to try, I am staging!
+
+bases:
+  - ../deployments/to-try
+
+patchesStrategicMerge:
+  - map.yaml

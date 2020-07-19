@@ -1,12 +1,7 @@
-namePrefix: staging-
 namespace: staging-producer
-commonLabels:
-  variant: staging
-  org: acmeCorporation
-commonAnnotations:
-  note: Hello, I am staging!
+
 bases:
-- ../hello
-- ../wonder
+- ../deployments
+
 patchesStrategicMerge:
 - map.yaml

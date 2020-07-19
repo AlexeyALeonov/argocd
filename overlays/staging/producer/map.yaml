@@ -3,6 +3,4 @@ kind: ConfigMap
 metadata:
   name: the-map
 data:
-  altGreeting: "Have a pineapple!"
-  enableRisky: "true"
   CREATE_NAMESPACE: producer

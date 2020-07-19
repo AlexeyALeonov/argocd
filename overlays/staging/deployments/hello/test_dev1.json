@@ -1,0 +1,10 @@
+{
+    "UID": "35f6fb1d-f991-4c2e-ae2d-496fe57353ce",
+    "DatabaseProvider": "MySql",
+    "DatabaseInfo": {
+        "Database": "dev1",
+        "Server": "test",
+        "Uid": "${TEST_DEV1_UID}",
+        "Pwd": "${TEST_DEV1_PWD}"
+    }
+}

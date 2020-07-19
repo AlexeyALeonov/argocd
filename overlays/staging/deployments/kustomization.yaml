@@ -1,9 +1,13 @@
 bases:
-  - wonder
+  - hello
 
-patchesJson6902:
-  - target:
-      version: v1
-      kind: ConfigMap
-      name: the-map
-    path: hello/app_deployment.yaml
+patchesStrategicMerge:
+  - to-try/sealedsecret_databases.json
+  - wonder/sealedsecret_databases.json
+
+configMapGenerator:
+  - name: deployments
+    behavior: merge
+    files:
+      - to-try/test_dev_3.json
+      - wonder/test3_dev2.json
