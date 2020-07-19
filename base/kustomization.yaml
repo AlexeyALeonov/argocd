@@ -4,8 +4,7 @@ commonLabels:
   app: hello
 
 resources:
-- deployment.yaml
-- service.yaml
+- api.yaml
 - configMap.yaml
 - namespace.yaml
 - sealedsecret_databases.json
@@ -17,7 +16,7 @@ vars:
   objref:
     apiVersion: v1
     kind: ConfigMap
-    name: the-map
+    name: app-config
 
 configurations:
 - config.yaml

@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: the-map
-data:
-  CREATE_NAMESPACE: producer-test3

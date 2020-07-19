@@ -1,5 +1,6 @@
 namespace: staging-hello
 bases:
   - ../deployments/hello
+  - ../base/ui-nginx
 patchesStrategicMerge:
   - map.yaml

@@ -1,7 +1,5 @@
-namespace: staging-producer-test3
+namespace: staging-hello-producer-test3
+nameSuffix: -producer-test3
 
 bases:
 - ../deployments/wonder
-
-patchesStrategicMerge:
-- map.yaml

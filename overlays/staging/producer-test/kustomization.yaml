@@ -1,5 +1,5 @@
-namespace: staging-producer-test
-
+namespace: staging-hello-producer-test
+nameSuffix: -producer-test
 bases:
 - ../deployments
 

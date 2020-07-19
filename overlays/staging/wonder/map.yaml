@@ -1,8 +1,15 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: the-map
+  name: app-config
 data:
   altGreeting: "Do you wonder, why a pineapple?"
   enableRisky: "true"
-  CREATE_NAMESPACE: wonder
+  # CREATE_NAMESPACE: wonder
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  MAIN_HOSTNAME: staging-hello-wonder.local

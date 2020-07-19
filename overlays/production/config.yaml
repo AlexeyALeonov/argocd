@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  MAIN_HOSTNAME: production.local
+  API_LOCATION: production-api
+  UI_LOCATION: production-ui

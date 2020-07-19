@@ -1,13 +1,6 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: the-map
-data:
-  CREATE_NAMESPACE: producer-test
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
   name: deployments
 data:
   test3_dev2.json: null
