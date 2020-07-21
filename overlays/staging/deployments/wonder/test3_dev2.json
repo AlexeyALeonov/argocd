@@ -3,8 +3,6 @@
     "DatabaseProvider": "MySql",
     "DatabaseInfo": {
         "Database": "dev2",
-        "Server": "test3",
-        "Uid": "${TEST3_DEV2_UID}",
-        "Pwd": "${TEST3_DEV2_PWD}"
+        "Server": "test3"
     }
 }

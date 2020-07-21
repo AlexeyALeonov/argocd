@@ -11,5 +11,4 @@ metadata:
   name: databases
 spec:
   encryptedData:
-    TEST3_DEV2_PWD: null
-    TEST3_DEV2_UID: null
+    test3.json: null

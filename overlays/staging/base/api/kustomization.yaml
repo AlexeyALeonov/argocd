@@ -6,5 +6,8 @@ commonLabels:
   variant: staging
 commonAnnotations:
   note: Hello, I am staging!
-bases:
+patchesStrategicMerge:
+- test_ss.json
+- test3_ss.json
+resources:
 - ../../../../base/api

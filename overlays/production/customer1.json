@@ -3,8 +3,6 @@
     "DatabaseProvider": "MySql",
     "DatabaseInfo": {
         "Server": "large-db1",
-        "Database": "customer1",
-        "Uid": "${LARGE_DB1_CUSTOMER1_UID}",
-        "Pwd": "${LARGE_DB1_CUSTOMER2_PWD}"
+        "Database": "customer1"
     }
 }

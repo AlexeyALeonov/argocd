@@ -15,12 +15,11 @@ spec:
       initContainers:
         - name: inject-databases
           image: alpine
-          envFrom:
-            - secretRef:
-                name: databases
           volumeMounts:
-            - mountPath: /input
+            - mountPath: /deployments
               name: config-template-volume
+            - mountPath: /databases
+              name: databases-volume
             - mountPath: /output
               name: app-deployments-volume
           command:
@@ -28,8 +27,10 @@ spec:
             - -c
           args:
             - |
-              apk add gettext jq
-              jq '.' -s /input/*.json | envsubst >/output/deployments.json
+              apk add jq
+              jq '.' -s /deployments/*.json >/tmp/_tmp_deployments.json
+              jq 'add' -s /databases/*.json >/tmp/_tmp_databases.json
+              jq '.[1] as $databases | [.[0] | .[] | .DatabaseInfo.Server as $server | .DatabaseInfo *= ($databases | .[$server] // {})]' -s /tmp/_tmp_deployments.json /tmp/_tmp_databases.json >/output/deployments.json
       containers:
         - name: api
           image: nginx
@@ -55,6 +56,9 @@ spec:
         - name: config-template-volume
           configMap:
             name: deployments
+        - name: databases-volume
+          secret:
+            secretName: databases
 ---
 apiVersion: v1
 kind: Service
