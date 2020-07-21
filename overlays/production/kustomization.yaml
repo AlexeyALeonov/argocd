@@ -10,7 +10,8 @@ commonAnnotations:
 patchesStrategicMerge:
 - deployment.yaml
 - config.yaml
-- sealedsecret_databases.json
+- large-db1_ss.json
+- large-db2_ss.json
 configMapGenerator:
 - behavior: replace
   files:
