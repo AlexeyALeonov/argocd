@@ -31,26 +31,26 @@ metadata:
 spec:
   selector:
     deployment: hello-nginx
-  type: ClusterIP
+  type: LoadBalancer
   ports:
   - protocol: TCP
-    port: 80
+    port: 8000
     targetPort: 80
----
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: nginx
-  annotations:
-    nginx.org/proxy-connect-timeout: "30s"
-    nginx.org/proxy-read-timeout: "20s"
-    nginx.org/client-max-body-size: "4m"
-spec:
-  rules:
-  - host: $(MAIN_HOSTNAME)
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: nginx
-          servicePort: 80
+# ---
+# apiVersion: networking.k8s.io/v1beta1
+# kind: Ingress
+# metadata:
+#   name: nginx
+#   annotations:
+#     nginx.org/proxy-connect-timeout: "30s"
+#     nginx.org/proxy-read-timeout: "20s"
+#     nginx.org/client-max-body-size: "4m"
+# spec:
+#   rules:
+#   - host: $(MAIN_HOSTNAME)
+#     http:
+#       paths:
+#       - path: /
+#         backend:
+#           serviceName: nginx
+#           servicePort: 80
