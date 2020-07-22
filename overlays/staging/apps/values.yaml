@@ -1,0 +1,10 @@
+spec:
+  source:
+    api:
+      image: 
+      tag: 
+    ui:
+      image: 
+      tag: 
+  destination:
+    server: https://kubernetes.default.svc
