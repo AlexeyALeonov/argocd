@@ -18,16 +18,12 @@ spec:
     path: overlays/staging/producer-test3
 
     # kustomize specific config
-    {{- if or .Values.spec.source.api.image .Values.spec.source.api.tag }}
+    {{- if .Values.spec.source.api.images }}
     kustomize:
+      {{- range .Values.spec.source.api.images }}
       images:
-        - name: nginx
-        {{- if .Values.spec.source.api.image }}
-          newName: {{ .Values.spec.source.api.image }}
-        {{- end }}
-        {{- if .Values.spec.source.api.tag }}
-          newTag: {{ .Values.spec.source.api.tag }}
-        {{- end }}
+        - {{ . }}
+      {{- end }}
     {{- end }}
 
   # Destination cluster and namespace to deploy the application
