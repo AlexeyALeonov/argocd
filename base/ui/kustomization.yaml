@@ -12,3 +12,6 @@ vars:
     apiVersion: v1
     kind: Service
     name: ui
+images:
+  - name: nginx
+    newTag: stable-perl
