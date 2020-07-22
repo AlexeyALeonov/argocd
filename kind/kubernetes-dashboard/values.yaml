@@ -1,0 +1,14 @@
+kubernetes-dashboard:
+  serviceAccount:
+    create: true
+  ingress:
+    enabled: true
+    hosts:
+      - dashboard.local
+  metricsScraper:
+    enabled: true
+  metrics-server:
+    enabled: true
+    args:
+      - --kubelet-preferred-address-types=InternalIP
+      - --kubelet-insecure-tls
