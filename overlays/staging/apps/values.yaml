@@ -1,8 +1,7 @@
 spec:
   source:
     api:
-      images: 
-        - nginx:stable-perl
+      images: []
     ui:
       images: []
   destination:
