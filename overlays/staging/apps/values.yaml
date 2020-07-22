@@ -2,7 +2,7 @@ spec:
   source:
     api:
       image: 
-      tag: 
+      tag: stable-perl
     ui:
       image: 
       tag: 
