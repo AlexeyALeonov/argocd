@@ -18,17 +18,17 @@ spec:
     path: overlays/staging/hello
 
     # kustomize specific config
-    {{- if or .Values.spec.source.ui.image .Values.spec.source.ui.tag -}}
+    {{- if or .Values.spec.source.ui.image .Values.spec.source.ui.tag }}
     kustomize:
       images:
         - name: nginx
-        {{- if .Values.spec.source.ui.image -}}
+        {{- if .Values.spec.source.ui.image }}
           newName: {{ .Values.spec.source.ui.image }}
-        {{- end -}}
-        {{- if .Values.spec.source.ui.tag -}}
+        {{- end }}
+        {{- if .Values.spec.source.ui.tag }}
           newTag: {{ .Values.spec.source.ui.tag }}
-        {{- end -}}
-    {{- end -}}
+        {{- end }}
+    {{- end }}
 
   # Destination cluster and namespace to deploy the application
   destination:
