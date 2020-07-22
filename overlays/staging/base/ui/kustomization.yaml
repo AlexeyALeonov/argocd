@@ -8,6 +8,3 @@ commonAnnotations:
   note: Hello, I am staging!
 bases:
 - ../../../../base/ui
-images:
-  - name: nginx
-    newTag: stable-perl
