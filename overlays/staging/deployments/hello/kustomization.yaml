@@ -6,4 +6,4 @@ configMapGenerator:
   - test_dev1.json
   name: deployments
 resources:
-- ../../base/api
+- ../../base/auth
