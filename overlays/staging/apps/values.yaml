@@ -2,6 +2,8 @@ spec:
   source:
     api:
       images: []
+    auth:
+      images: []
     ui:
       images: []
   destination:

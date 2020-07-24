@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  template:
+    spec:
+      containers:
+        - name: api
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: JWT_AUTH_KEY
+          envFrom: null
+          volumeMounts: null
+      initContainers: null
+      volumes: null
