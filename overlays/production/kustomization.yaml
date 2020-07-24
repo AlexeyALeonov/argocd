@@ -22,3 +22,6 @@ resources:
 - ../../base/api
 - ../../base/ui
 - ../../base/nginx
+images:
+- name: api
+  newName: nginx
