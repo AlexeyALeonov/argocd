@@ -8,9 +8,9 @@ spec:
         - auth=nginx
     centralConfig:
       images:
-        - central-config=nginx
+        - central-config=nginx:stable-perl
     ui:
       images:
-        - ui=nginx:stable-perl
+        - ui=nginx
   destination:
     server: https://kubernetes.default.svc
