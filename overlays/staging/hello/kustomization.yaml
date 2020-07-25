@@ -7,6 +7,3 @@ resources:
 - ../deployments/hello
 - ../base/ui
 - ../base/nginx
-images:
-- name: ui
-  newName: nginx
