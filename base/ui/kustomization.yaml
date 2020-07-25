@@ -4,6 +4,7 @@ commonLabels:
   app: hello
 resources:
 - ui.yaml
+- configMap.yaml
 vars:
 - fieldref:
     fieldPath: metadata.name
@@ -12,3 +13,5 @@ vars:
     apiVersion: v1
     kind: Service
     name: ui
+configurations:
+- config.yaml
