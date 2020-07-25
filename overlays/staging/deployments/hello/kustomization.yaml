@@ -5,5 +5,7 @@ configMapGenerator:
   files:
   - test_dev1.json
   name: deployments
+patchesStrategicMerge:
+- map.yaml
 resources:
-- ../../base/auth
+- ../../base/api

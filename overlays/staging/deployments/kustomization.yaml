@@ -3,8 +3,9 @@ kind: Kustomization
 configMapGenerator:
 - behavior: merge
   files:
+  - hello/test_dev1.json
   - to-try/test_dev_3.json
   - wonder/test3_dev2.json
   name: deployments
 resources:
-- hello
+- ../base/api

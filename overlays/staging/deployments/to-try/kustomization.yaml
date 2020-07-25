@@ -6,4 +6,4 @@ configMapGenerator:
   - test_dev_3.json
   name: deployments
 resources:
-- ../../base/api
+- ../hello
