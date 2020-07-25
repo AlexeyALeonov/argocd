@@ -7,5 +7,7 @@ configMapGenerator:
   - to-try/test_dev_3.json
   - wonder/test3_dev2.json
   name: deployments
+patchesStrategicMerge:
+- producer.yaml
 resources:
 - ../base/api
