@@ -47,6 +47,9 @@ spec:
                 configMapKeyRef:
                   name: app-config
                   key: enableRisky
+          envFrom:
+            - configMapRef:
+                name: app-config
           volumeMounts:
             - name: app-deployments-volume
               mountPath: /etc/deployments
