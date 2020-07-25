@@ -5,10 +5,10 @@ spec:
         - api=nginx
     auth:
       images:
-        - auth=nginx
+        - auth=nginx:stable-perl
     centralConfig:
       images:
-        - central-config=nginx:stable-perl
+        - central-config=nginx
     producer:
       images:
         - producer=nginx
