@@ -4,6 +4,8 @@ spec:
       images: []
     auth:
       images: []
+    centralConfig:
+      images: []
     ui:
       images: []
   destination:
