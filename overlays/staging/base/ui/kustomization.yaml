@@ -8,3 +8,6 @@ commonAnnotations:
   note: Hello, I am staging!
 bases:
 - ../../../../base/ui
+images:
+- name: ui
+  newName: nginx
