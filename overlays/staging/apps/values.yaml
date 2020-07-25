@@ -1,12 +1,16 @@
 spec:
   source:
     api:
-      images: []
+      images:
+        - api=nginx
     auth:
-      images: []
+      images:
+        - auth=nginx
     centralConfig:
-      images: []
+      images:
+        - central-config=nginx
     ui:
-      images: []
+      images:
+        - ui=nginx:stable-perl
   destination:
     server: https://kubernetes.default.svc
