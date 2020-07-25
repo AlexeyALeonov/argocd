@@ -13,6 +13,7 @@ spec:
       images:
         - producer=nginx
     ui:
-      images: []
+      images:
+        - ui=nginx:stable-perl
   destination:
     server: https://kubernetes.default.svc
