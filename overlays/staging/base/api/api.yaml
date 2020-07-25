@@ -7,6 +7,7 @@ spec:
     spec:
       containers:
         - name: api
+          image: api
           env:
             - name: JWT_KEY
               $patch: delete

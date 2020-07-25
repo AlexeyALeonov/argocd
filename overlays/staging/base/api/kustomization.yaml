@@ -12,6 +12,3 @@ patchesStrategicMerge:
 - test3_ss.json
 resources:
 - ../auth
-images:
-- name: api
-  newName: nginx
