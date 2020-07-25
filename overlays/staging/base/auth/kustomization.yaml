@@ -22,6 +22,3 @@ vars:
     name: app-config
 configurations:
 - config.yaml
-images:
-- name: auth
-  newName: nginx

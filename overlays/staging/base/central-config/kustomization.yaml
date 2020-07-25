@@ -10,6 +10,3 @@ patchesStrategicMerge:
 - map.yaml
 resources:
 - ../../../../base/central-config
-images:
-- name: central-config
-  newName: nginx
