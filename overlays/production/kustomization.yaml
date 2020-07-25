@@ -25,3 +25,5 @@ resources:
 images:
 - name: api
   newName: nginx
+- name: ui
+  newName: nginx
