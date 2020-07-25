@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  template:
+    spec:
+      containers:
+        - name: api
+          env:
+            - name: JWT_KEY
+              $patch: delete
+            - name: CENTRAL_CONFIG_API_URL
+              $patch: delete
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+$patch: delete
+metadata:
+  name: api
