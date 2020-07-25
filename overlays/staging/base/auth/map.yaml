@@ -4,3 +4,5 @@ metadata:
   name: app-config
 data:
   JWT_AUTH_KEY: 7d824bd0-59fb-49e9-a118-e79ad0626928
+  AUTH_API_HOSTNAME: staging-auth.local
+  CENTRAL_CONFIG_API_URL: http://$(CENTRAL_CONFIG_API_HOSTNAME)

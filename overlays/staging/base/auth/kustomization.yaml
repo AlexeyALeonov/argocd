@@ -4,7 +4,24 @@ patchesStrategicMerge:
 - api.yaml
 - map.yaml
 resources:
-- ../api
+- ../central-config
+vars:
+- fieldref:
+    fieldPath: data.AUTH_API_HOSTNAME
+  name: AUTH_API_HOSTNAME
+  objref:
+    apiVersion: v1
+    kind: ConfigMap
+    name: app-config
+- fieldref:
+    fieldPath: data.JWT_AUTH_KEY
+  name: JWT_AUTH_KEY
+  objref:
+    apiVersion: v1
+    kind: ConfigMap
+    name: app-config
+configurations:
+- config.yaml
 images:
 - name: auth
   newName: nginx
