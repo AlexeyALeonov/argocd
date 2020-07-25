@@ -2,7 +2,7 @@ spec:
   source:
     api:
       images:
-        - api=nginx:stable-perl
+        - api=nginx
     auth:
       images:
         - auth=nginx
@@ -14,6 +14,6 @@ spec:
         - producer=nginx
     ui:
       images:
-        - ui=nginx
+        - ui=nginx:stable-perl
   destination:
     server: https://kubernetes.default.svc
