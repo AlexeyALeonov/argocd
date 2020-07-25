@@ -5,7 +5,6 @@ metadata:
 data:
   altGreeting: "Do you wonder, why a pineapple?"
   enableRisky: "true"
-  # CREATE_NAMESPACE: wonder
 ---
 apiVersion: v1
 kind: ConfigMap
