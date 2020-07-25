@@ -9,6 +9,9 @@ spec:
     centralConfig:
       images:
         - central-config=nginx:stable-perl
+    producer:
+      images:
+        - producer=nginx
     ui:
       images:
         - ui=nginx
