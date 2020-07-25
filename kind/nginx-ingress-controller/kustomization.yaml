@@ -1,4 +1,6 @@
-resources:
-- https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+resources:
+- https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
+patchesStrategicMerge:
+- configMap.yaml
