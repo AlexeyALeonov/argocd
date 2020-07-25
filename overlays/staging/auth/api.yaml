@@ -7,12 +7,6 @@ spec:
     spec:
       containers:
         - name: api
-          env:
-            - name: JWT_KEY
-              valueFrom:
-                configMapKeyRef:
-                  name: app-config
-                  key: JWT_AUTH_KEY
           envFrom: null
           volumeMounts: null
       initContainers: null
