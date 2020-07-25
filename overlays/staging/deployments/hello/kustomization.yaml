@@ -9,6 +9,3 @@ patchesStrategicMerge:
 - map.yaml
 resources:
 - ../../base/api
-images:
-- name: ui
-  newName: nginx
