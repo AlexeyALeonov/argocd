@@ -2,10 +2,10 @@ spec:
   source:
     api:
       images:
-        - api=nginx
+        - api=nginx:stable-perl
     auth:
       images:
-        - auth=nginx:stable-perl
+        - auth=nginx
     centralConfig:
       images:
         - central-config=nginx
