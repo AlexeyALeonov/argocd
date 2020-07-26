@@ -17,25 +17,25 @@ spec:
     targetRevision: develop
     path: overlays/staging/wonder
 
-    # kustomize specific config
-    {{- if or .Values.spec.source.api.images .Values.spec.source.ui.images }}
-    kustomize:
-      images:
-      {{- range .Values.spec.source.api.images }}
-        - {{ . }}
-      {{- end }}
-      {{- range .Values.spec.source.ui.images }}
-        - {{ . }}
-      {{- end }}
-    {{- end }}
+    # # kustomize specific config
+    # {{- if or .Values.spec.source.api.images .Values.spec.source.ui.images }}
+    # kustomize:
+    #   images:
+    #   {{- range .Values.spec.source.api.images }}
+    #     - {{ . }}
+    #   {{- end }}
+    #   {{- range .Values.spec.source.ui.images }}
+    #     - {{ . }}
+    #   {{- end }}
+    # {{- end }}
 
   # Destination cluster and namespace to deploy the application
   destination:
-    server: {{ .Values.spec.destination.server }}
+    server: https://kubernetes.default.svc
     namespace: staging-hello-wonder
 
   # Sync policy
   syncPolicy:
     automated:
-      prune: false # Specifies if resources should be pruned during auto-syncing ( false by default ).
-      selfHeal: false # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
+      prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
+      selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
