@@ -9,3 +9,8 @@ resources:
 - ../../../../base/hello
 components:
 - ../../components/auth
+images:
+- name: api
+  newName: nginx
+- name: ui
+  newName: nginx
