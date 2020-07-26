@@ -13,3 +13,6 @@ patchesStrategicMerge:
 - reuseSecrets.yaml
 resources:
 - ../../../../base/producer
+images:
+- name: producer
+  newName: nginx

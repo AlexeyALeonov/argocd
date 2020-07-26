@@ -18,13 +18,10 @@ spec:
     path: overlays/production/hello
 
     # kustomize specific config
-    {{- if or .Values.spec.source.api.images .Values.spec.source.ui.images }}
+    {{- if .Values.spec.source.app.images }}
     kustomize:
       images:
-      {{- range .Values.spec.source.api.images }}
-        - {{ . }}
-      {{- end }}
-      {{- range .Values.spec.source.ui.images }}
+      {{- range .Values.spec.source.app.images }}
         - {{ . }}
       {{- end }}
     {{- end }}
