@@ -9,3 +9,6 @@ commonAnnotations:
   note: Hello, I am staging!
 resources:
 - ../../../../base/producer
+images:
+- name: producer
+  newName: nginx

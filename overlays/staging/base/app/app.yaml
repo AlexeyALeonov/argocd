@@ -9,11 +9,11 @@ spec:
   source:
     targetRevision: develop
 
-    # kustomize specific config
-    kustomize:
-      images:
-      - api=nginx
-      - ui=nginx
-      - auth=nginx
-      - producer=nginx
-      - central-config=nginx
+    # # kustomize specific config
+    # kustomize:
+    #   images:
+    #   - api=nginx
+    #   - ui=nginx
+    #   - auth=nginx
+    #   - producer=nginx
+    #   - central-config=nginx

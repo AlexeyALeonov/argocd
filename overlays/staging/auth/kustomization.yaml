@@ -14,3 +14,6 @@ resources:
 components:
 - ../components/auth
 - ../components/central-config
+images:
+- name: auth
+  newName: nginx
