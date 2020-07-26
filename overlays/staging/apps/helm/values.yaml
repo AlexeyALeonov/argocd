@@ -1,6 +1,5 @@
 spec:
   source:
-    images:
-    - api=nginx
+    images: []
   destination:
     server: https://kubernetes.default.svc
