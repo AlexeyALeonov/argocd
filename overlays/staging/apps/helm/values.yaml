@@ -1,8 +1,7 @@
 spec:
   source:
     api:
-      images:
-      - api=nginx
+      images: []
     auth:
       images: []
     centralConfig:

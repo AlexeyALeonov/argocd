@@ -17,6 +17,9 @@ spec:
     targetRevision: develop
     path: overlays/staging/hello
 
+    kustomize:
+      images:
+      - api=nginx
     # kustomize specific config
     {{- if or .Values.spec.source.api.images .Values.spec.source.ui.images }}
     kustomize:
