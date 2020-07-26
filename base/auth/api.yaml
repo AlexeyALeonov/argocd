@@ -6,14 +6,24 @@ spec:
   template:
     spec:
       containers:
-      - name: central-config
-        image: central-config
+      - name: auth
+        image: auth
         env:
         - name: JWT_KEY
           valueFrom:
             configMapKeyRef:
+              key: JWT_AUTH_KEY
               name: app-config
+        - name: CENTRAL_CONFIG_API_URL
+          valueFrom:
+            configMapKeyRef:
+              key: CENTRAL_CONFIG_API_URL
+              name: app-config
+        - name: JWT_CENTRAL_CONFIG_KEY
+          valueFrom:
+            configMapKeyRef:
               key: JWT_CENTRAL_CONFIG_KEY
+              name: app-config
       - name: api
         $patch: delete
       initContainers: null

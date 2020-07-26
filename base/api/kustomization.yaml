@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 commonLabels:
-  app: hello
+  kind: api
 resources:
 - api.yaml
 - configMap.yaml
@@ -10,7 +10,14 @@ resources:
 vars:
 - fieldref:
     fieldPath: metadata.name
-  name: API_LOCATION
+  name: API_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: api
+- fieldref:
+    fieldPath: metadata.namespace
+  name: API_NAMESPACE
   objref:
     apiVersion: v1
     kind: Service

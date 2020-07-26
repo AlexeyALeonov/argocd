@@ -3,5 +3,6 @@ kind: ConfigMap
 metadata:
   name: app-config
 data:
+  CENTRAL_CONFIG_API_URL: http://$(CENTRAL_CONFIG_API_HOSTNAME)
   altGreeting: null
   enableRisky: null

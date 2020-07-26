@@ -13,55 +13,55 @@ spec:
         deployment: hello-api
     spec:
       initContainers:
-        - name: inject-databases
-          image: alpine
-          volumeMounts:
-            - mountPath: /deployments
-              name: config-template-volume
-            - mountPath: /databases
-              name: databases-volume
-            - mountPath: /output
-              name: app-deployments-volume
-          command:
-            - /bin/sh
-            - -c
-          args:
-            - |
-              apk add jq
-              jq '.' -s /deployments/*.json >/tmp/_tmp_deployments.json
-              jq 'add' -s /databases/*.json >/tmp/_tmp_databases.json
-              jq '.[1] as $databases | [.[0] | .[] | .DatabaseInfo.Server as $server | .DatabaseInfo *= ($databases | .[$server] // {})]' -s /tmp/_tmp_deployments.json /tmp/_tmp_databases.json >/output/deployments.json
+      - name: inject-databases
+        image: alpine
+        volumeMounts:
+        - mountPath: /deployments
+          name: config-template-volume
+        - mountPath: /databases
+          name: databases-volume
+        - mountPath: /output
+          name: app-deployments-volume
+        command:
+        - /bin/sh
+        - -c
+        args:
+        - |
+          apk add jq
+          jq '.' -s /deployments/*.json >/tmp/_tmp_deployments.json
+          jq 'add' -s /databases/*.json >/tmp/_tmp_databases.json
+          jq '.[1] as $databases | [.[0] | .[] | .DatabaseInfo.Server as $server | .DatabaseInfo *= ($databases | .[$server] // {})]' -s /tmp/_tmp_deployments.json /tmp/_tmp_databases.json >/output/deployments.json
       containers:
-        - name: api
-          image: api
-          ports:
-            - containerPort: 80
-          env:
-            - name: ALT_GREETING
-              valueFrom:
-                configMapKeyRef:
-                  name: app-config
-                  key: altGreeting
-            - name: ENABLE_RISKY
-              valueFrom:
-                configMapKeyRef:
-                  name: app-config
-                  key: enableRisky
-          envFrom:
-            - configMapRef:
-                name: app-config
-          volumeMounts:
-            - name: app-deployments-volume
-              mountPath: /etc/deployments
-      volumes:
+      - name: api
+        image: api
+        ports:
+        - containerPort: 80
+        env:
+        - name: ALT_GREETING
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: altGreeting
+        - name: ENABLE_RISKY
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: enableRisky
+        envFrom:
+        - configMapRef:
+            name: app-config
+        volumeMounts:
         - name: app-deployments-volume
-          emptyDir: {}
-        - name: config-template-volume
-          configMap:
-            name: deployments
-        - name: databases-volume
-          secret:
-            secretName: databases
+          mountPath: /etc/deployments
+      volumes:
+      - name: app-deployments-volume
+        emptyDir: {}
+      - name: config-template-volume
+        configMap:
+          name: deployments
+      - name: databases-volume
+        secret:
+          secretName: databases
 ---
 apiVersion: v1
 kind: Service

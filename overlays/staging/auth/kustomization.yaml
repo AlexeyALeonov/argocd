@@ -1,9 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namePrefix: staging-
 namespace: staging-hello-auth
 nameSuffix: -auth
-patchesStrategicMerge:
-- api.yaml
-- map.yaml
+commonLabels:
+  org: acmeCorporation
+  variant: staging
+commonAnnotations:
+  note: Hello, I am staging!
 resources:
-- ../base/auth
+- ../../../base/auth
+components:
+- ../components/auth
+- ../components/central-config

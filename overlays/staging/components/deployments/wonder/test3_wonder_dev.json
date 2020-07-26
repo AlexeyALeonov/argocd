@@ -1,0 +1,8 @@
+{
+    "UID": "085f7db5-abe2-4c00-b1a6-f6e0ac349aae",
+    "DatabaseProvider": "MySql",
+    "DatabaseInfo": {
+        "Database": "wonder_dev",
+        "Server": "test3"
+    }
+}
