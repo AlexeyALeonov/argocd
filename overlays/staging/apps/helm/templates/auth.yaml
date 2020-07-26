@@ -18,9 +18,9 @@ spec:
     path: overlays/staging/auth
 
     # kustomize specific config
-    {{- if .Values.spec.source.auth.images }}
+    {{- if .Values.spec.source.images }}
     kustomize:
-      {{- range .Values.spec.source.auth.images }}
+      {{- range .Values.spec.source.images }}
       images:
         - {{ . }}
       {{- end }}
