@@ -3,7 +3,6 @@ kind: Kustomization
 namePrefix: production-
 namespace: production-hello
 commonLabels:
-  org: acmeCorporation
   variant: production
 commonAnnotations:
   note: Hello, I am production!
@@ -12,16 +11,11 @@ patchesStrategicMerge:
 - config.yaml
 - large-db1_ss.json
 - large-db2_ss.json
-configMapGenerator:
-- behavior: replace
-  files:
-  - customer1.json
-  - customer2.json
-  name: deployments
 resources:
-- ../../base/api
-- ../../base/ui
-- ../../base/nginx
+- ../../../base/hello
+components:
+- ../components/deployments/customer1
+- ../components/deployments/customer2
 images:
 - name: api
   newName: nginx
