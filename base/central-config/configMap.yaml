@@ -5,3 +5,15 @@ metadata:
 data:
   altGreeting: null
   enableRisky: null
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: deployments
+$patch: delete
+---
+kind: SealedSecret
+apiVersion: bitnami.com/v1alpha1
+metadata:
+  name: databases
+$patch: delete
