@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: https://github.com/AlexeyALeonov/argocd.git
     targetRevision: develop
-    path: overlays/staging/apps/helm
+    path: overlays/staging/apps
 
   # Destination cluster and namespace to deploy the application
   destination:
