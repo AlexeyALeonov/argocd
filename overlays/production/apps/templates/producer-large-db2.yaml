@@ -29,7 +29,7 @@ spec:
   # Destination cluster and namespace to deploy the application
   destination:
     server: {{ .Values.spec.destination.server }}
-    namespace: production-hello-producer-large-db2
+    namespace: production-hello
 
   # Sync policy
   syncPolicy:
