@@ -15,9 +15,9 @@ spec:
   source:
     repoURL: https://github.com/AlexeyALeonov/argocd.git
 
-    # kustomize specific config
-    kustomize:
-      images: []
+    # # kustomize specific config
+    # kustomize:
+    #   images: []
 
   # Destination cluster and namespace to deploy the application
   destination:
