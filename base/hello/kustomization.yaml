@@ -5,7 +5,6 @@ commonAnnotations:
 commonLabels:
   app: hello
   org: acmeCorporation
-namespace: hello
 resources:
 - ../api
 - ../ui
