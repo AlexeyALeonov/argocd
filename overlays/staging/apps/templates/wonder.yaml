@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staging-hello-wonder
+  # You'll usually want to add your resources to the argocd namespace.
+  namespace: argocd
+  # Add a this finalizer ONLY if you want these to cascade delete.
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # The project the application belongs to.
+  project: default
+
+  # Source of the application manifests
+  source:
+    repoURL: https://github.com/AlexeyALeonov/argocd.git
+    targetRevision: develop
+    path: overlays/staging/wonder
+
+    # kustomize specific config
+    {{- if or .Values.spec.source.api.images .Values.spec.source.ui.images }}
+    kustomize:
+      images:
+      {{- range .Values.spec.source.api.images }}
+        - {{ . }}
+      {{- end }}
+      {{- range .Values.spec.source.ui.images }}
+        - {{ . }}
+      {{- end }}
+    {{- end }}
+
+  # Destination cluster and namespace to deploy the application
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: staging-hello-wonder
+
+  # Sync policy
+  syncPolicy:
+    automated:
+      prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
+      selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
