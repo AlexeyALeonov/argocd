@@ -4,6 +4,7 @@ namePrefix: staging-
 nameSuffix: -central-config
 namespace: staging-hello-central-config
 commonLabels:
+  app: hello
   org: acmeCorporation
   variant: staging
 commonAnnotations:

@@ -4,6 +4,7 @@ namePrefix: staging-
 namespace: staging-hello-auth
 nameSuffix: -auth
 commonLabels:
+  app: hello
   org: acmeCorporation
   variant: staging
 commonAnnotations:
