@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: production-hello
+  name: hello
   # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
   # Add a this finalizer ONLY if you want these to cascade delete.
@@ -14,22 +14,15 @@ spec:
   # Source of the application manifests
   source:
     repoURL: https://github.com/AlexeyALeonov/argocd.git
-    targetRevision: HEAD
-    path: overlays/production/hello
 
-    # kustomize specific config
-    {{- if .Values.spec.source.app.images }}
-    kustomize:
-      images:
-      {{- range .Values.spec.source.app.images }}
-        - {{ . }}
-      {{- end }}
-    {{- end }}
+    # # kustomize specific config
+    # kustomize:
+    #   images: []
 
   # Destination cluster and namespace to deploy the application
   destination:
-    server: {{ .Values.spec.destination.server }}
-    namespace: production-hello
+    server: https://kubernetes.default.svc
+    namespace: hello
 
   # Sync policy
   syncPolicy:

@@ -13,3 +13,6 @@ resources:
 - ../../../base/central-config
 components:
 - ../components/central-config
+images:
+- name: central-config
+  newName: nginx

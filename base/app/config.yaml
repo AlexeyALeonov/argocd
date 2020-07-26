@@ -1,0 +1,9 @@
+nameReference:
+- kind: Application
+  group: argoproj.io
+  version: v1alpha1
+  fieldSpecs:
+  - path: spec/destination/namespace
+    kind: Application
+    group: argoproj.io
+    version: v1alpha1

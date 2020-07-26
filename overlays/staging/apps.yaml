@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: staging-hello
+  name: staging
   # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
   # Add a this finalizer ONLY if you want these to cascade delete.
@@ -15,24 +15,12 @@ spec:
   source:
     repoURL: https://github.com/AlexeyALeonov/argocd.git
     targetRevision: develop
-    path: overlays/staging/hello
-
-    # kustomize specific config
-    {{- if or .Values.spec.source.api.images .Values.spec.source.ui.images }}
-    kustomize:
-      images:
-      {{- range .Values.spec.source.api.images }}
-        - {{ . }}
-      {{- end }}
-      {{- range .Values.spec.source.ui.images }}
-        - {{ . }}
-      {{- end }}
-    {{- end }}
+    path: overlays/staging/apps
 
   # Destination cluster and namespace to deploy the application
   destination:
-    server: {{ .Values.spec.destination.server }}
-    namespace: staging-hello
+    server: https://kubernetes.default.svc
+    namespace: argocd
 
   # Sync policy
   syncPolicy:
