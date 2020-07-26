@@ -3,4 +3,6 @@ kind: Kustomization
 namespace: staging-hello-producer-test3
 nameSuffix: -producer-test3
 resources:
-- ../deployments/wonder
+- ../base/producer
+components:
+- ../components/deployments/wonder

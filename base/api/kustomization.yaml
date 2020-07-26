@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-commonLabels:
-  app: hello
+commonAnnotations:
+  kind: api
 resources:
 - api.yaml
 - configMap.yaml
@@ -9,15 +9,15 @@ resources:
 - sealedsecret_databases.json
 vars:
 - fieldref:
-    fieldPath: data.CREATE_NAMESPACE
-  name: CREATE_NAMESPACE
+    fieldPath: metadata.name
+  name: API_SERVICE
   objref:
     apiVersion: v1
-    kind: ConfigMap
-    name: app-config
+    kind: Service
+    name: api
 - fieldref:
-    fieldPath: metadata.name
-  name: API_LOCATION
+    fieldPath: metadata.namespace
+  name: API_NAMESPACE
   objref:
     apiVersion: v1
     kind: Service

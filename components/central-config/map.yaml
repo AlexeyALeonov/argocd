@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  JWT_CENTRAL_CONFIG_KEY: d52fc704-bd5b-467b-98bd-4cc5d50143e4
+  CENTRAL_CONFIG_API_HOSTNAME: central-config.local

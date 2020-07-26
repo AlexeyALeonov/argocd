@@ -1,0 +1,5 @@
+varReference:
+- path: data/AUTH_API_URL
+  kind: ConfigMap
+- path: data/JWT_AUTH_KEY
+  kind: ConfigMap
