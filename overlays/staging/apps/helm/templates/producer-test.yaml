@@ -18,9 +18,9 @@ spec:
     path: overlays/staging/producer-test
 
     # kustomize specific config
-    {{- if .Values.spec.source.images }}
+    {{- if .Values.spec.source.producer.images }}
     kustomize:
-      {{- range .Values.spec.source.images }}
+      {{- range .Values.spec.source.producer.images }}
       images:
         - {{ . }}
       {{- end }}

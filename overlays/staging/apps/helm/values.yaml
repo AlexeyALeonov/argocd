@@ -1,5 +1,12 @@
 spec:
   source:
-    images: []
+    app:
+      images: []
+    auth:
+      images: []
+    centralConfig:
+      images: []
+    producer:
+      images: []
   destination:
     server: https://kubernetes.default.svc
