@@ -5,6 +5,8 @@ kubernetes-dashboard:
     enabled: true
     hosts:
       - dashboard.local
+  extraArgs:
+  - --enable-skip-login
   metricsScraper:
     enabled: true
   metrics-server:

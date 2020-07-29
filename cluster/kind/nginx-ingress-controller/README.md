@@ -1,0 +1,4 @@
+# To Install
+```
+kubectl -k .
+```
