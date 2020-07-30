@@ -1,6 +1,6 @@
 spec:
   source:
-    app:
+    application:
       images: []
     auth:
       images: []

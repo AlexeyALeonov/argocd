@@ -18,10 +18,10 @@ spec:
     path: overlays/staging/hello
 
     # kustomize specific config
-    {{- if .Values.spec.source.app.images }}
+    {{- if .Values.spec.source.application.images }}
     kustomize:
       images:
-      {{- range .Values.spec.source.app.images }}
+      {{- range .Values.spec.source.application.images }}
         - {{ . }}
       {{- end }}
     {{- end }}
