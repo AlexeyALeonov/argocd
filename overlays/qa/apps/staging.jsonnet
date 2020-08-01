@@ -1,13 +1,13 @@
 function(
   namespace="hello",
-  namePrefix="staging-",
+  namePrefix="qa-",
   nameSuffix="-jsonnet",
-  targetRevision="feature/add-jsonnet-version"
+  targetRevision="qa"
 )
 
-(import '../../../../base/app.libsonnet') (
+(import '../../../base/app.libsonnet') (
   namePrefix=namePrefix, nameSuffix=nameSuffix, namespace=namespace,
-  targetRevision=targetRevision, path='overlays/staging/jsonnet'
+  targetRevision=targetRevision, path='overlays/qa/jsonnet'
 )
 {
   spec+: {
