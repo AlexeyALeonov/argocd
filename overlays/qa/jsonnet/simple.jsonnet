@@ -3,11 +3,11 @@ function(
   uiImage="nginx",
   nginxImage="nginx",
   namespace="hello",
-  namePrefix="staging-",
+  namePrefix="qa-",
   nameSuffix="-simple",
   AUTH_API_URL=null,
   JWT_AUTH_KEY="",
-  MAIN_HOSTNAME="simple-hello.staging.local",
+  MAIN_HOSTNAME="simple-hello.qa.local",
   API_HOSTNAME=null,
   UI_HOSTNAME=null
 )
@@ -25,19 +25,40 @@ local simple = (import '../../../base/hello.libsonnet') (
   MAIN_HOSTNAME=MAIN_HOSTNAME
 )
 {
+  api_config+: {
+    data+: {
+      altGreeting: "Make it simple!",
+      enableRisky: "true"
+    }
+  },
+
   deployments+: {
     data+: {
-      "test3_simple_dev.json": importstr '../components/deployments/simple/test3_simple_dev.json'
+      "test_simple_qa.json": importstr '../components/deployments/simple/test_simple_qa.json'
     },
   },
 
-  local databases = import '../../../components/databases/test3/test3_ss.json',
+  local databases = import '../../../components/databases/test/test_ss.json',
 
   databases+: {
     spec+: {
       encryptedData+: databases.spec.encryptedData
     },
   },
+
+  local annotations = {
+    metadata+: {
+      annotations+: {
+        note: "Make it simple - I am QA!"
+      },
+    },
+  },
+
+  api+: annotations,
+
+  ui+: annotations,
+
+  nginx+: annotations,
 };
 
 kube.List() {items_+: simple}

@@ -3,7 +3,7 @@ kind: Component
 configMapGenerator:
 - behavior: merge
   files:
-  - test3_simple_dev.json
+  - test_simple_qa.json
   name: deployments
 components:
-- ../../../../../components/databases/test3
+- ../../../../../components/databases/test

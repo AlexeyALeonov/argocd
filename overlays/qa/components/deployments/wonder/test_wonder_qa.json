@@ -1,0 +1,8 @@
+{
+    "UID": "f12f4230-9195-47ae-a6f4-986b867d11d9",
+    "DatabaseProvider": "MySql",
+    "DatabaseInfo": {
+        "Database": "simple_qa",
+        "Server": "test"
+    }
+}

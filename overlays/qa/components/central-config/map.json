@@ -1,0 +1,11 @@
+{
+  "apiVersion": "v1",
+  "kind": "ConfigMap",
+  "metadata": {
+    "name": "app-config"
+  },
+  "data": {
+    "JWT_CENTRAL_CONFIG_KEY": "68a61d72-058b-46d7-9673-fe6b054de69d",
+    "CENTRAL_CONFIG_API_HOSTNAME": "central-config.qa.local"
+  }
+}

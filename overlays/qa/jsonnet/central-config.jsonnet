@@ -1,7 +1,7 @@
 function(
   apiImage="nginx",
   namespace="hello",
-  namePrefix="staging-",
+  namePrefix="qa-",
   nameSuffix="-central-config",
   JWT_KEY="",
   MAIN_HOSTNAME=null
