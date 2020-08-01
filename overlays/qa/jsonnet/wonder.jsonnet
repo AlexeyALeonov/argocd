@@ -25,7 +25,7 @@ local wonder = (import '../../../base/hello.libsonnet') (
   MAIN_HOSTNAME=MAIN_HOSTNAME
 )
 {
-  config_api+: {
+  api_config+: {
     data+: {
       altGreeting: "Do you wonder, why a pineapple?",
       enableRisky: "true"
