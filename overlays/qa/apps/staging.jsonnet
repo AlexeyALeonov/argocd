@@ -9,15 +9,3 @@ function(
   namePrefix=namePrefix, nameSuffix=nameSuffix, namespace=namespace,
   targetRevision=targetRevision, path='overlays/qa/jsonnet'
 )
-{
-  spec+: {
-    source+: {
-      directory+: {
-        recurse: true
-      },
-    },
-    destination+: {
-      namespace:: super.namespace
-    },
-  }
-}
