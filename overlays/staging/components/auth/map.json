@@ -1,0 +1,11 @@
+{
+  "apiVersion": "v1",
+  "kind": "ConfigMap",
+  "metadata": {
+    "name": "app-config"
+  },
+  "data": {
+    "JWT_AUTH_KEY": "1a5199a5-c729-4227-9bcf-45eea009b5d2",
+    "AUTH_API_HOSTNAME": "auth.dev.local"
+  }
+}
