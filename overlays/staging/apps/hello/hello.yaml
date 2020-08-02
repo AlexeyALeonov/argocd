@@ -14,7 +14,6 @@ spec:
     kustomize:
       images:
       - apiImage=nginx:stable-perl
-      - nginx=nginx:stable-perl
     #   - uiImage=nginx
     #   - nginxImage=nginx
     #   - authImage=nginx
