@@ -15,6 +15,6 @@ spec:
       # - apiImage=nginx:stable-perl
       # - uiImage=nginx
       # - nginxImage=nginx
-      - authImage=nginx
+      # - authImage=nginx
       # - producerImage=nginx
       # - central-configImage=nginx
