@@ -9,10 +9,10 @@ resources:
 - ../../../../base/hello
 components:
 - ../../components/auth
-images:
-- name: apiImage
-  newName: nginx
-- name: uiImage
-  newName: nginx
-- name: nginxImage
-  newName: nginx
+# images:
+# - name: apiImage
+#   newName: nginx
+# - name: uiImage
+#   newName: nginx
+# - name: nginxImage
+#   newName: nginx
