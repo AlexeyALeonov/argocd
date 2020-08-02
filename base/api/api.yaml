@@ -33,7 +33,7 @@ spec:
           jq '.[1] as $databases | [.[0] | .[] | .DatabaseInfo.Server as $server | .DatabaseInfo *= ($databases | .[$server] // {})]' -s /tmp/_tmp_deployments.json /tmp/_tmp_databases.json >/output/deployments.json
       containers:
       - name: api
-        image: api
+        image: apiImage
         ports:
         - containerPort: 80
         env:

@@ -10,5 +10,5 @@ commonAnnotations:
 resources:
 - ../../../../base/producer
 images:
-- name: producer
+- name: producerImage
   newName: nginx

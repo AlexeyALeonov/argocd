@@ -14,5 +14,5 @@ resources:
 components:
 - ../components/central-config
 images:
-- name: central-config
+- name: central-configImage
   newName: nginx

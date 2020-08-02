@@ -10,7 +10,9 @@ resources:
 components:
 - ../../components/auth
 images:
-- name: api
+- name: apiImage
   newName: nginx
-- name: ui
+- name: uiImage
+  newName: nginx
+- name: nginxImage
   newName: nginx

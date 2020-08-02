@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: central-config
-        image: central-config
+        image: central-configImage
         env:
         - name: JWT_KEY
           valueFrom:
