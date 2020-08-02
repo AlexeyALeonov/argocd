@@ -1,6 +1,6 @@
 function(
   namespace="argocd",
-  name="central-config"
+  name="central-config",
   namePrefix="qa-",
   nameSuffix="-app",
   targetRevision="qa"

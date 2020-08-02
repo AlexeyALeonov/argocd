@@ -1,6 +1,6 @@
 function(
   namespace="argocd",
-  name="producer-test"
+  name="producer-test",
   namePrefix="qa-",
   nameSuffix="-app",
   targetRevision="qa"

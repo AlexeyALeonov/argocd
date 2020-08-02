@@ -1,6 +1,6 @@
 function(
   namespace="argocd",
-  name="auth"
+  name="auth",
   namePrefix="qa-",
   nameSuffix="-app",
   targetRevision="qa"
