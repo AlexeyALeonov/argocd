@@ -1,11 +1,12 @@
 function(
   namespace="argocd",
-  namePrefix="",
-  nameSuffix="",
+  name="auth"
+  namePrefix="qa-",
+  nameSuffix="-app",
   targetRevision="qa"
 )
 
 (import '../../../base/app.libsonnet') (
-  namePrefix=namePrefix, nameSuffix=nameSuffix, namespace=namespace,
+  namePrefix=namePrefix, nameSuffix=nameSuffix, namespace=namespace, name=name,
   targetRevision=targetRevision, path='overlays/qa/auth'
 )
