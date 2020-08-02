@@ -1,11 +1,11 @@
 function(
-  namespace="hello",
-  namePrefix="qa-",
-  nameSuffix="-jsonnet",
+  namespace="argocd",
+  namePrefix="",
+  nameSuffix="",
   targetRevision="qa"
 )
 
 (import '../../../base/app.libsonnet') (
   namePrefix=namePrefix, nameSuffix=nameSuffix, namespace=namespace,
-  targetRevision=targetRevision, path='overlays/qa/jsonnet'
+  targetRevision=targetRevision, path='overlays/qa/producer-test'
 )
