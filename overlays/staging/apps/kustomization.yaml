@@ -8,3 +8,7 @@ resources:
 - to-try
 - producer-test
 - producer-test3
+images:
+- name: api
+  newName: nginx
+  newTag: stable-perl
