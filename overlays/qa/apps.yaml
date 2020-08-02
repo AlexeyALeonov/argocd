@@ -17,6 +17,13 @@ spec:
     targetRevision: qa
     path: overlays/qa/apps
 
+    directory:
+      jsonnet:
+        tlas:
+        - code: false
+          name: apiImage
+          value: nginx:stable-perl
+
   # Destination cluster and namespace to deploy the application
   destination:
     server: https://kubernetes.default.svc
