@@ -25,6 +25,8 @@ vars:
 configMapGenerator:
 - name: deployments
   files:
-  - test_hello_dev.json
+  - test_hello_dev_base.json
+components:
+- ../../components/databases/test
 configurations:
 - config.yaml
