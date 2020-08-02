@@ -9,3 +9,13 @@ spec:
   source:
     targetRevision: develop
     path: overlays/staging/hello
+
+    # kustomize specific config
+    kustomize:
+      images:
+      - apiImage=nginx:stable-perl
+    #   - uiImage=nginx
+    #   - nginxImage=nginx
+    #   - authImage=nginx
+    #   - producerImage=nginx
+    #   - central-configImage=nginx
