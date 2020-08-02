@@ -1,5 +1,5 @@
 function(
-  apiImage="nginx",
+  apiImage="nginx:stable-perl",
   uiImage="nginx",
   nginxImage="nginx",
   namespace="hello",
