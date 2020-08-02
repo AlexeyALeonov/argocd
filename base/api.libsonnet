@@ -30,7 +30,7 @@ local kube = import '../kube-libsonnet/kube.libsonnet';
     }
   },
 
-  databases: (import 'api/sealedsecret_databases.json') {
+  databases_name:: {
     metadata+: {
       name: namePrefix + 'databases' + nameSuffix,
       namespace: namePrefix + namespace + nameSuffix
@@ -44,6 +44,8 @@ local kube = import '../kube-libsonnet/kube.libsonnet';
       },
     },
   },
+
+  databases: (import 'api/sealedsecret_databases.json') + self.databases_name,
 
   api_svc: kube.Service(namePrefix + name + nameSuffix) {
     metadata+: {

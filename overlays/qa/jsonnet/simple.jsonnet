@@ -40,11 +40,7 @@ local simple = (import '../../../base/hello.libsonnet') (
 
   local databases = import '../../../components/databases/test/test_ss.json',
 
-  databases+: {
-    spec+: {
-      encryptedData+: databases.spec.encryptedData
-    },
-  },
+  databases+: databases + super.databases_name,
 
   local annotations = {
     metadata+: {
