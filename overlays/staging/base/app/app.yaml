@@ -17,4 +17,4 @@ spec:
       # - nginxImage=nginx
       - authImage=nginx
       # - producerImage=nginx
-      - central-configImage=nginx
+      # - central-configImage=nginx
