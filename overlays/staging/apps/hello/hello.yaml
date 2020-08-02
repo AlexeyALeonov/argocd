@@ -10,10 +10,10 @@ spec:
     targetRevision: develop
     path: overlays/staging/hello
 
-    # kustomize specific config
-    kustomize:
-      images:
-      - apiImage=nginx:stable-perl
+    # # kustomize specific config
+    # kustomize:
+    #   images:
+    #   - apiImage=nginx:stable-perl
     #   - uiImage=nginx
     #   - nginxImage=nginx
     #   - authImage=nginx
