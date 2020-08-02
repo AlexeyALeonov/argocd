@@ -24,5 +24,7 @@ vars:
     name: api
 configMapGenerator:
 - name: deployments
+  files:
+  - test_hello_dev.json
 configurations:
 - config.yaml
