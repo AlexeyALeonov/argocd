@@ -9,10 +9,10 @@ spec:
   source:
     targetRevision: develop
 
-    # kustomize specific config
-    kustomize:
-      images:
-      - apiImage=nginx:stable-perl
+    # # kustomize specific config
+    # kustomize:
+    #   images:
+    #   - apiImage=nginx:stable-perl
     #   - uiImage=nginx
     #   - nginxImage=nginx
     #   - authImage=nginx
