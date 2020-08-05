@@ -11,12 +11,17 @@ spec:
         emptyDir: {}
       # 2. Use an init container to download/copy custom binaries into the emptyDir
       initContainers:
-      - name: download-tools
-        image: alpine:3.8
+      - name: copy-kustomize-from-image
+        image: kustomize:local
         command: [sh, -c]
         args:
-        - wget -qO- https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.1/kustomize_v3.8.1_linux_amd64.tar.gz | tar -xvzf - &&
-          mv kustomize /custom-tools/
+        - cp /usr/local/bin/kustomize /custom-tools/
+      # - name: download-tools
+      #   image: alpine:3.8
+      #   command: [sh, -c]
+      #   args:
+      #   - wget -qO- https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.1/kustomize_v3.8.1_linux_amd64.tar.gz | tar -xvzf - &&
+      #     mv kustomize /custom-tools/
         volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
@@ -41,12 +46,17 @@ spec:
         emptyDir: {}
       # 2. Use an init container to download/copy custom binaries into the emptyDir
       initContainers:
-      - name: download-tools
-        image: alpine:3.8
+      - name: copy-kustomize-from-image
+        image: kustomize:local
         command: [sh, -c]
         args:
-        - wget -qO- https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.1/kustomize_v3.8.1_linux_amd64.tar.gz | tar -xvzf - &&
-          mv kustomize /custom-tools/
+        - cp /usr/local/bin/kustomize /custom-tools/
+      # - name: download-tools
+      #   image: alpine:3.8
+      #   command: [sh, -c]
+      #   args:
+      #   - wget -qO- https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.1/kustomize_v3.8.1_linux_amd64.tar.gz | tar -xvzf - &&
+      #     mv kustomize /custom-tools/
         volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
@@ -71,12 +81,17 @@ spec:
         emptyDir: {}
       # 2. Use an init container to download/copy custom binaries into the emptyDir
       initContainers:
-      - name: download-tools
-        image: alpine:3.8
+      - name: copy-kustomize-from-image
+        image: kustomize:local
         command: [sh, -c]
         args:
-        - wget -qO- https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.1/kustomize_v3.8.1_linux_amd64.tar.gz | tar -xvzf - &&
-          mv kustomize /custom-tools/
+        - cp /usr/local/bin/kustomize /custom-tools/
+      # - name: download-tools
+      #   image: alpine:3.8
+      #   command: [sh, -c]
+      #   args:
+      #   - wget -qO- https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.1/kustomize_v3.8.1_linux_amd64.tar.gz | tar -xvzf - &&
+      #     mv kustomize /custom-tools/
         volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
