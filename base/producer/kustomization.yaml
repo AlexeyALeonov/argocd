@@ -4,6 +4,5 @@ commonAnnotations:
   kind: producer
 patchesStrategicMerge:
 - producer.yaml
-- removeNamespace.yaml
 resources:
 - ../api
