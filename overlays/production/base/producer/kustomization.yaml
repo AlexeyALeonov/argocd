@@ -9,7 +9,6 @@ commonLabels:
 commonAnnotations:
   note: Hello, I am production!
 patchesStrategicMerge:
-- removeNamespace.yaml
 - reuseSecrets.yaml
 resources:
 - ../../../../base/producer
