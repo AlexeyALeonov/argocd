@@ -1,8 +1,0 @@
-{
-    "UID": "35f6fb1d-f991-4c2e-ae2d-496fe57353ce",
-    "DatabaseProvider": "MySql",
-    "DatabaseInfo": {
-        "Database": "hello_dev",
-        "Server": "test"
-    }
-}

@@ -1,9 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1alpha1
-kind: Component
-configMapGenerator:
-- behavior: merge
-  files:
-  - test_to-try_dev.json
-  name: deployments
-components:
-- ../../../../../components/databases/test

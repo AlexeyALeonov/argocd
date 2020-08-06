@@ -1,3 +1,6 @@
+varReference:
+- path: metadata/name
+  kind: Namespace
 nameReference:
 - kind: SealedSecret
   group: bitnami.com

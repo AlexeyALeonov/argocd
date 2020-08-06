@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: staging
+  name: production
   # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
   # Add a this finalizer ONLY if you want these to cascade delete.
@@ -14,8 +14,8 @@ spec:
   # Source of the application manifests
   source:
     repoURL: https://github.com/AlexeyALeonov/argocd.git
-    targetRevision: develop
-    path: overlays/staging/apps
+    targetRevision: HEAD
+    path: overlays/production/apps
 
   # Destination cluster and namespace to deploy the application
   destination:
