@@ -1,5 +1,6 @@
 FROM golang:1.14 as build
-RUN GO111MODULE=on go get sigs.k8s.io/kustomize/kustomize/v3
+RUN git clone https://github.com/kubernetes-sigs/kustomize.git
+RUN cd kustomize/kustomize && go install .
 
 FROM bitnami/minideb
 COPY --from=build /go/bin/kustomize /usr/local/bin/kustomize

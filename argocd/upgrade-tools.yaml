@@ -15,7 +15,7 @@ spec:
         image: golang:1.14
         command: [sh, -c]
         args:
-        - GOBIN=/custom-tools/ GO111MODULE=on go get sigs.k8s.io/kustomize/kustomize/v3
+        - git clone https://github.com/kubernetes-sigs/kustomize.git && cd kustomize/kustomize && GOBIN=/custom-tools/ go install .
       # - name: copy-kustomize-from-image
       #   image: kustomize:local
       #   command: [sh, -c]
@@ -55,7 +55,7 @@ spec:
         image: golang:1.14
         command: [sh, -c]
         args:
-        - GOBIN=/custom-tools/ GO111MODULE=on go get sigs.k8s.io/kustomize/kustomize/v3
+        - git clone https://github.com/kubernetes-sigs/kustomize.git && cd kustomize/kustomize && GOBIN=/custom-tools/ go install .
       # - name: copy-kustomize-from-image
       #   image: kustomize:local
       #   command: [sh, -c]
@@ -95,7 +95,7 @@ spec:
         image: golang:1.14
         command: [sh, -c]
         args:
-        - GOBIN=/custom-tools/ GO111MODULE=on go get sigs.k8s.io/kustomize/kustomize/v3
+        - git clone https://github.com/kubernetes-sigs/kustomize.git && cd kustomize/kustomize && GOBIN=/custom-tools/ go install .
       # - name: copy-kustomize-from-image
       #   image: kustomize:local
       #   command: [sh, -c]
