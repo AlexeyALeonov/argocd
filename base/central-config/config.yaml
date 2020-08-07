@@ -1,3 +1,0 @@
-varReference:
-- path: spec/rules/0/host
-  kind: Ingress

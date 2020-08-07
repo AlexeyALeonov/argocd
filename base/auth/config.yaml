@@ -1,5 +1,0 @@
-varReference:
-- path: spec/rules/0/host
-  kind: Ingress
-- path: data/CENTRAL_CONFIG_API_URL
-  kind: ConfigMap

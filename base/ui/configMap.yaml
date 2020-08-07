@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: ui-config
-data:
-  AUTH_API_URL: http://$(AUTH_API_HOSTNAME)/api
-  JWT_AUTH_KEY: $(JWT_AUTH_KEY)

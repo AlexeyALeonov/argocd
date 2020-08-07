@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: nginx-config
-data:
-  MAIN_HOSTNAME: hello.local
-  API_LOCATION: $(API_SERVICE).$(API_NAMESPACE).svc.local
-  UI_LOCATION: $(UI_SERVICE).$(UI_NAMESPACE).svc.local

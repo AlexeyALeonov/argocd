@@ -1,8 +1,0 @@
-{
-    "Uid": "7bf49bee-dde2-4e95-80c8-0056276333da",
-    "DatabaseProvider": "MySql",
-    "DatabaseInfo": {
-        "Server": "large-db2",
-        "Database": "customer2"
-    }
-}
