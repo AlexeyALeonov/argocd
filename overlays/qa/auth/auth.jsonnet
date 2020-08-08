@@ -1,12 +1,12 @@
 function(
+  authImage = "nginx",
   namespace = "hello",
   namePrefix = "qa-",
   nameSuffix = "-auth",
   JWT_KEY = "",
   CENTRAL_CONFIG_API_URL = null,
   JWT_CENTRAL_CONFIG_KEY = "",
-  MAIN_HOSTNAME = null,
-  authImage = "nginx"
+  MAIN_HOSTNAME = null
 )
 
 local kube = import '../../../kube-libsonnet/kube.libsonnet';
@@ -20,10 +20,10 @@ local authApiHostname = if MAIN_HOSTNAME != null then MAIN_HOSTNAME else if auth
 local authJwtKey = if JWT_KEY != "" then JWT_KEY else if authConfig.data.JWT_AUTH_KEY != "" then authConfig.data.JWT_AUTH_KEY;
 
 local auth = (import '../../../base/auth.libsonnet') (
-    authImage = authImage,
-    namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace,
-    MAIN_HOSTNAME = authApiHostname, JWT_KEY = authJwtKey,
-    CENTRAL_CONFIG_API_URL = centralApiUrl, JWT_CENTRAL_CONFIG_KEY = centralJwtKey
+  authImage = authImage,
+  namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace,
+  MAIN_HOSTNAME = authApiHostname, JWT_KEY = authJwtKey,
+  CENTRAL_CONFIG_API_URL = centralApiUrl, JWT_CENTRAL_CONFIG_KEY = centralJwtKey
 );
 
 kube.List() {items_+: auth}

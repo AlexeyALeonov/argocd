@@ -7,15 +7,19 @@ function(
   JWT_KEY = ""
 )
 
+local centralConfig = (import '../components/central-config/map.json');
+local centralApiHostname = if MAIN_HOSTNAME != null then MAIN_HOSTNAME else centralConfig.data.CENTRAL_CONFIG_API_HOSTNAME;
+local centralJwtKey = if JWT_KEY != "" then JWT_KEY else if centralConfig.data.JWT_CENTRAL_CONFIG_KEY != "" then centralConfig.data.JWT_CENTRAL_CONFIG_KEY;
+
 (import 'api.libsonnet') (
     apiImage = centralConfigImage,
     namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace,
-    MAIN_HOSTNAME = MAIN_HOSTNAME
+    MAIN_HOSTNAME = centralApiHostname
 )
 {
   api_config+: {
     data+: {
-      [if JWT_KEY != "" then "JWT_KEY"]: JWT_KEY,
+      [if centralJwtKey != "" then "JWT_KEY"]: centralJwtKey,
     },
   },
 
