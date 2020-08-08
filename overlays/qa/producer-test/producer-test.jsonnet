@@ -19,7 +19,7 @@ local producer_test = (import '../../../base/producer.libsonnet') (
     },
   },
 
-  sealedSecret+:: import '../../../components/databases/test/test1_ss.json',
+  sealedSecret+:: import '../../../components/databases/test/test_ss.json',
 };
 
 kube.List() {items_+: producer_test}
