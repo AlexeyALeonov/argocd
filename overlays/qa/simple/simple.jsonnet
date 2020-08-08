@@ -38,7 +38,7 @@ local simple = (import '../../../base/hello.libsonnet') (
     },
   },
 
-  sealedSecret+:: import '../../../components/databases/test/test1_ss.json',
+  sealedSecret+:: import '../../../components/databases/test/test_ss.json',
 
   local annotations = {
     metadata+: {
