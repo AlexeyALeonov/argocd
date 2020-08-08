@@ -2,7 +2,7 @@
     "UID": "0dd31267-0126-402a-a21c-f13a695d469a",
     "DatabaseProvider": "MySql",
     "DatabaseInfo": {
-        "Database": "wonder_qa",
+        "Database": "wonder1_qa",
         "Server": "test"
     }
 }
