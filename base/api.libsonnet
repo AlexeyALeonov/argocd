@@ -31,9 +31,13 @@ local utils = import '../kube-libsonnet/utils.libsonnet';
     }
   },
 
-  databases_name:: {
+  sealedSecret:: kube.SealedSecret(namePrefix + 'databases' + nameSuffix),
+
+  databases: self.sealedSecret {
     local this = self,
-    local secret = utils.HashedSecret(namePrefix + 'databases' + nameSuffix),
+    local secret = utils.HashedSecret(namePrefix + 'databases' + nameSuffix) {
+      data: $.sealedSecret.spec.encryptedData
+    },
     metadata+: {
       name: secret.metadata.name,
       namespace: namePrefix + namespace + nameSuffix
@@ -47,8 +51,6 @@ local utils = import '../kube-libsonnet/utils.libsonnet';
       },
     },
   },
-
-  databases: (import 'api/sealedsecret_databases.json') + self.databases_name,
 
   api_svc: kube.Service(namePrefix + name + nameSuffix) {
     metadata+: {

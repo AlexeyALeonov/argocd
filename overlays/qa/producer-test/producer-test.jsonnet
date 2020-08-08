@@ -19,9 +19,7 @@ local producer_test = (import '../../../base/producer.libsonnet') (
     },
   },
 
-  local databases = import '../../../components/databases/test/test_ss.json',
-
-  databases+: databases + super.databases_name,
+  sealedSecret+:: import '../../../components/databases/test/test_ss.json',
 };
 
 kube.List() {items_+: producer_test}
