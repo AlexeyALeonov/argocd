@@ -38,7 +38,7 @@ local simple = (import '../../../base/hello.libsonnet') (
     },
   },
 
-  local databases = import '../../../components/databases/test/test_ss.json',
+  local databases = import '../../../components/databases/test/test1_ss.json',
 
   databases+: databases + super.databases_name,
 
