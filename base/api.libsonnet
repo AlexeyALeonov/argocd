@@ -1,10 +1,10 @@
 function(
-  apiImage="nginx",
-  name="api",
-  namespace="hello",
-  namePrefix="",
-  nameSuffix="",
-  MAIN_HOSTNAME="hello.svc"
+  apiImage = "nginx",
+  name = "api",
+  namespace = "hello",
+  namePrefix = "",
+  nameSuffix = "",
+  MAIN_HOSTNAME = "hello.svc"
 )
 
 local kube = import '../kube-libsonnet/kube.libsonnet';

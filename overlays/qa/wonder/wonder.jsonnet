@@ -1,15 +1,15 @@
 function(
-  apiImage="nginx",
-  uiImage="nginx",
-  nginxImage="nginx",
-  namespace="hello",
-  namePrefix="qa-",
-  nameSuffix="-wonder",
-  AUTH_API_URL=null,
-  JWT_AUTH_KEY="",
-  MAIN_HOSTNAME="wonder-hello.qa.local",
-  API_HOSTNAME=null,
-  UI_HOSTNAME=null
+  apiImage = "nginx",
+  uiImage = "nginx",
+  nginxImage = "nginx",
+  namespace = "hello",
+  namePrefix = "qa-",
+  nameSuffix = "-wonder",
+  AUTH_API_URL = null,
+  JWT_AUTH_KEY = "",
+  MAIN_HOSTNAME = "wonder-hello.qa.local",
+  API_HOSTNAME = null,
+  UI_HOSTNAME = null
 )
 
 local kube = import '../../../kube-libsonnet/kube.libsonnet';
@@ -19,10 +19,10 @@ local authApiUrl = if AUTH_API_URL != null then AUTH_API_URL else if authConfig.
 local authJwtKey = if JWT_AUTH_KEY != "" then JWT_AUTH_KEY else if authConfig.data.JWT_AUTH_KEY != "" then authConfig.data.JWT_AUTH_KEY;
 
 local wonder = (import '../../../base/hello.libsonnet') (
-  apiImage=apiImage, uiImage=uiImage, nginxImage=nginxImage,
-  namePrefix=namePrefix, nameSuffix=nameSuffix, namespace=namespace,
-  AUTH_API_URL=authApiUrl, JWT_AUTH_KEY=authJwtKey,
-  MAIN_HOSTNAME=MAIN_HOSTNAME
+  apiImage = apiImage, uiImage = uiImage, nginxImage = nginxImage,
+  namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace,
+  AUTH_API_URL = authApiUrl, JWT_AUTH_KEY = authJwtKey,
+  MAIN_HOSTNAME = MAIN_HOSTNAME
 )
 {
   api_config+: {

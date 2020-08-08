@@ -1,15 +1,15 @@
 function(
-  apiImage="nginx",
-  uiImage="nginx",
-  nginxImage="nginx",
-  namespace="hello",
-  namePrefix="",
-  nameSuffix="",
-  AUTH_API_URL=null,
-  JWT_AUTH_KEY="",
-  MAIN_HOSTNAME="hello.local",
-  API_HOSTNAME=null,
-  UI_HOSTNAME=null
+  apiImage = "nginx",
+  uiImage = "nginx",
+  nginxImage = "nginx",
+  namespace = "hello",
+  namePrefix = "",
+  nameSuffix = "",
+  MAIN_HOSTNAME = "hello.local",
+  AUTH_API_URL = null,
+  JWT_AUTH_KEY = "",
+  API_HOSTNAME = null,
+  UI_HOSTNAME = null
 )
 
 local kube = import '../kube-libsonnet/kube.libsonnet';
@@ -17,7 +17,7 @@ local kube = import '../kube-libsonnet/kube.libsonnet';
 local authConfig = (import '../components/auth/map.json');
 local authJwtKey = if JWT_AUTH_KEY != "" then JWT_AUTH_KEY else if authConfig.data.JWT_AUTH_KEY != "" then authConfig.data.JWT_AUTH_KEY;
 
-local api = (import 'api.libsonnet') (apiImage=apiImage, namePrefix=namePrefix, nameSuffix=nameSuffix, namespace=namespace) {
+local api = (import 'api.libsonnet') (apiImage = apiImage, namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace) {
   api_config+: {
     data+: {
       JWT_AUTH_KEY: authJwtKey,

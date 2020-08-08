@@ -1,15 +1,15 @@
 function(
-  apiImage="nginx",
-  namespace="hello",
-  namePrefix="qa-",
-  nameSuffix="-producer-test"
+  producerImage = "nginx",
+  namespace = "hello",
+  namePrefix = "qa-",
+  nameSuffix = "-producer-test"
 )
 
 local kube = import '../../../kube-libsonnet/kube.libsonnet';
 
 local producer_test = (import '../../../base/producer.libsonnet') (
-  apiImage=apiImage, 
-  namePrefix=namePrefix, nameSuffix=nameSuffix, namespace=namespace
+  producerImage = producerImage, 
+  namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace
 )
 {
   deployments+: {

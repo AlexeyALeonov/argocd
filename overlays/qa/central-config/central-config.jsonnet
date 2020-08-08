@@ -1,10 +1,10 @@
 function(
-  apiImage="nginx",
-  namespace="hello",
-  namePrefix="qa-",
-  nameSuffix="-central-config",
-  JWT_KEY="",
-  MAIN_HOSTNAME=null
+  namespace = "hello",
+  namePrefix = "qa-",
+  nameSuffix = "-central-config",
+  JWT_KEY = "",
+  MAIN_HOSTNAME = null,
+  centralConfigImage = null
 )
 
 local kube = import '../../../kube-libsonnet/kube.libsonnet';
@@ -14,9 +14,8 @@ local centralApiHostname = if MAIN_HOSTNAME != null then MAIN_HOSTNAME else if c
 local centralJwtKey = if JWT_KEY != "" then JWT_KEY else if centralConfig.data.JWT_CENTRAL_CONFIG_KEY != "" then centralConfig.data.JWT_CENTRAL_CONFIG_KEY;
 
 local central_config = (import '../../../base/central-config.libsonnet') (
-    apiImage=apiImage,
-    namePrefix=namePrefix, nameSuffix=nameSuffix, namespace=namespace,
-    MAIN_HOSTNAME=centralApiHostname, JWT_KEY=centralJwtKey
+    namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace,
+    MAIN_HOSTNAME = centralApiHostname, JWT_KEY = centralJwtKey, centralConfigImage = centralConfigImage
 );
 
 kube.List() {items_+: central_config}

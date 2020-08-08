@@ -1,16 +1,16 @@
 function(
-  apiImage="nginx",
-  namespace="hello",
-  namePrefix="",
-  nameSuffix="-central-config",
-  JWT_KEY="",
-  MAIN_HOSTNAME="central-config.local"
+  centralConfigImage = "nginx",
+  namespace = "hello",
+  namePrefix = "",
+  nameSuffix = "-central-config",
+  MAIN_HOSTNAME = "central-config.local",
+  JWT_KEY = ""
 )
 
 (import 'api.libsonnet') (
-    apiImage=apiImage, 
-    namePrefix=namePrefix, nameSuffix=nameSuffix, namespace=namespace,
-    MAIN_HOSTNAME=MAIN_HOSTNAME
+    apiImage = centralConfigImage,
+    namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace,
+    MAIN_HOSTNAME = MAIN_HOSTNAME
 )
 {
   api_config+: {

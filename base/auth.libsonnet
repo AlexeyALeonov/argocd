@@ -1,12 +1,12 @@
 function(
-  apiImage="nginx",
-  namespace="hello",
-  namePrefix="",
-  nameSuffix="-auth",
-  JWT_KEY="",
-  CENTRAL_CONFIG_API_URL=null,
-  JWT_CENTRAL_CONFIG_KEY="",
-  MAIN_HOSTNAME="auth.local"
+  authImage = "nginx",
+  namespace = "hello",
+  namePrefix = "",
+  nameSuffix = "-auth",
+  MAIN_HOSTNAME = "auth.local",
+  JWT_KEY = "",
+  CENTRAL_CONFIG_API_URL = null,
+  JWT_CENTRAL_CONFIG_KEY = ""
 )
 
 local centralConfig = (import '../components/central-config/map.json');
@@ -18,9 +18,9 @@ local authApiHostname = if MAIN_HOSTNAME != null then MAIN_HOSTNAME else if auth
 local authJwtKey = if JWT_KEY != "" then JWT_KEY else if authConfig.data.JWT_AUTH_KEY != "" then authConfig.data.JWT_AUTH_KEY;
 
 (import 'api.libsonnet') (
-    apiImage=apiImage, 
-    namePrefix=namePrefix, nameSuffix=nameSuffix, namespace=namespace,
-    MAIN_HOSTNAME=authApiHostname
+    apiImage = authImage,
+    namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace,
+    MAIN_HOSTNAME = authApiHostname
 )
 {
   api_config+: {
