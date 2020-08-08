@@ -31,7 +31,13 @@ local kube = import '../kube-libsonnet/kube.libsonnet';
       "repoURL": "https://github.com/AlexeyALeonov/argocd.git",
       [if targetRevision != null then "targetRevision"]: targetRevision,
       [if path != null then "path"]: path,
-      directory: {
+      [if apiImage != null ||
+        uiImage != null ||
+        nginxImage != null ||
+        producerImage != null ||
+        authImage != null ||
+        centralConfigImage != null then
+      "directory"]: {
         jsonnet: {
           tlas_:: {
             [if apiImage != null then "apiImage"]: {
