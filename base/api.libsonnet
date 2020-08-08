@@ -32,15 +32,17 @@ local utils = import '../kube-libsonnet/utils.libsonnet';
   },
 
   databases_name:: {
+    local this = self,
+    local secret = utils.HashedSecret(namePrefix + 'databases' + nameSuffix),
     metadata+: {
-      name: namePrefix + 'databases' + nameSuffix,
+      name: secret.metadata.name,
       namespace: namePrefix + namespace + nameSuffix
     },
     spec+: {
       template+: {
         metadata+: {
-          name: namePrefix + 'databases' + nameSuffix,
-          namespace: namePrefix + namespace + nameSuffix
+          name: this.metadata.name,
+          namespace: this.metadata.namespace
         },
       },
     },
@@ -117,11 +119,7 @@ local utils = import '../kube-libsonnet/utils.libsonnet';
           volumes_+: {
             "app-deployments-volume": kube.EmptyDirVolume(),
             "config-template-volume": kube.ConfigMapVolume($.deployments),
-            "databases-volume": {
-              secret: {
-                secretName: namePrefix + 'databases' + nameSuffix,
-              },
-            },
+            "databases-volume": kube.SecretVolume($.databases),
           },
         },
       },
