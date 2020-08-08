@@ -14,6 +14,21 @@ function(
 
 local kube = import '../kube-libsonnet/kube.libsonnet';
 
+local Namespace = {
+  metadata+: {
+    namespace: namePrefix + namespace + nameSuffix
+  },
+};
+
+local labels = {
+  metadata+: {
+    local this = self,
+    labels+: {
+      "k8s-app": this.name
+    },
+  },
+};
+
 local authConfig = (import '../components/auth/map.json');
 local authJwtKey = if JWT_AUTH_KEY != "" then JWT_AUTH_KEY else if authConfig.data.JWT_AUTH_KEY != "" then authConfig.data.JWT_AUTH_KEY;
 
@@ -28,23 +43,14 @@ local api = (import 'api.libsonnet') (apiImage = apiImage, namePrefix = namePref
 };
 
 api + {
-
-  ns: kube.Namespace(namePrefix + namespace + nameSuffix),
-
-  ui_config: kube.ConfigMap(namePrefix + 'ui-config' + nameSuffix) {
-    metadata+: {
-      namespace: namePrefix + namespace + nameSuffix
-    },
+  ui_config: kube.ConfigMap(namePrefix + 'ui-config' + nameSuffix) + Namespace {
     data+: {
       [if AUTH_API_URL != null then "AUTH_API_URL"]: AUTH_API_URL,
       [if JWT_AUTH_KEY != "" then "JWT_AUTH_KEY"]: JWT_AUTH_KEY,
     },
   },
 
-  nginx_config: kube.ConfigMap(namePrefix + 'nginx-config' + nameSuffix) {
-    metadata+: {
-      namespace: namePrefix + namespace + nameSuffix
-    },
+  nginx_config: kube.ConfigMap(namePrefix + 'nginx-config' + nameSuffix) + Namespace {
     data+: {
       MAIN_HOSTNAME: MAIN_HOSTNAME,
       API_HOSTNAME: if API_HOSTNAME == null then $.api_svc.host else API_HOSTNAME,
@@ -52,27 +58,15 @@ api + {
     },
   },
 
-  ui_svc: kube.Service(namePrefix + 'ui' + nameSuffix) {
-    metadata+: {
-      namespace: namePrefix + namespace + nameSuffix,
-      labels+: {
-        "k8s-app": namePrefix + 'ui' + nameSuffix
-      },
-    },
+  ui_svc: kube.Service($.ui.metadata.name) + Namespace {
     target_pod: $.ui.spec.template,
     spec+: {
       ports: [{ port: 80, targetPort: 80 }],
-      selector: { "k8s-app": namePrefix + 'ui' + nameSuffix },
+      selector: $.ui.metadata.labels,
     },
   },
 
-  ui: kube.Deployment(namePrefix + 'ui' + nameSuffix) {
-    metadata+: {
-      namespace: namePrefix + namespace + nameSuffix,
-      labels+: {
-        "k8s-app": namePrefix + 'ui' + nameSuffix
-      },
-    },
+  ui: kube.Deployment(namePrefix + 'ui' + nameSuffix) + Namespace + labels {
     spec+: {
       template+: {
         spec+: {
@@ -83,7 +77,7 @@ api + {
               envFrom: [
                 {
                   configMapRef: {
-                    name: namePrefix + 'ui-config' + nameSuffix,
+                    name: $.ui_config.metadata.name,
                   },
                 },
               ],
@@ -94,27 +88,15 @@ api + {
     },
   },
 
-  nginx_svc: kube.Service(namePrefix + 'nginx' + nameSuffix) {
-    metadata+: {
-      namespace: namePrefix + namespace + nameSuffix,
-      labels+: {
-        "k8s-app": namePrefix + 'nginx' + nameSuffix
-      },
-    },
+  nginx_svc: kube.Service($.nginx.metadata.name) + Namespace + labels {
     target_pod: $.nginx.spec.template,
     spec+: {
       ports: [{ port: 80, targetPort: 80 }],
-      selector: { "k8s-app": namePrefix + 'nginx' + nameSuffix },
+      selector: $.nginx.metadata.labels,
     },
   },
 
-  nginx: kube.Deployment(namePrefix + 'nginx' + nameSuffix) {
-    metadata+: {
-      namespace: namePrefix + namespace + nameSuffix,
-      labels+: {
-        "k8s-app": namePrefix + 'nginx' + nameSuffix
-      },
-    },
+  nginx: kube.Deployment(namePrefix + 'nginx' + nameSuffix) + Namespace + labels {
     spec+: {
       template+: {
         spec+: {
@@ -125,7 +107,7 @@ api + {
               envFrom: [
                 {
                   configMapRef: {
-                    name: namePrefix + 'nginx-config' + nameSuffix,
+                    name: $.nginx_config.metadata.name,
                   },
                 },
               ],
@@ -136,16 +118,12 @@ api + {
     },
   },
 
-  nginx_ing: kube.Ingress(namePrefix + 'nginx' + nameSuffix) {
+  nginx_ing: kube.Ingress($.nginx.metadata.name) + Namespace + labels {
     metadata+: {
       annotations+: {
         "nginx.org/proxy-connect-timeout": "30s",
         "nginx.org/proxy-read-timeout": "20s",
         "nginx.org/client-max-body-size": "4m"
-      },
-      namespace: namePrefix + namespace + nameSuffix,
-      labels+: {
-        "k8s-app": namePrefix + 'nginx' + nameSuffix
       },
     },
     spec+: {

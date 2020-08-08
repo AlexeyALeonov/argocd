@@ -10,37 +10,42 @@ function(
 local kube = import '../kube-libsonnet/kube.libsonnet';
 local utils = import '../kube-libsonnet/utils.libsonnet';
 
-{
-  // apiImage:: std.extVar('API_IMAGE'),
+local Namespace = {
+  metadata+: {
+    namespace: namePrefix + namespace + nameSuffix
+  },
+};
 
-  ns: kube.Namespace(namePrefix + namespace + nameSuffix),
-
-  api_config: kube.ConfigMap(namePrefix + 'app-config' + nameSuffix) {
-    metadata+: {
-      namespace: namePrefix + namespace + nameSuffix
+local labels = {
+  metadata+: {
+    local this = self,
+    labels+: {
+      "k8s-app": this.name
     },
+  },
+};
+
+{
+  ns: kube.Namespace(Namespace.metadata.namespace),
+
+  api_config: kube.ConfigMap(namePrefix + 'app-config' + nameSuffix) + Namespace {
     data+: {
       altGreeting: "Good Morning!",
       enableRisky: "false"
     },
   },
 
-  deployments: utils.HashedConfigMap(namePrefix + 'deployments' + nameSuffix) {
-    metadata+: {
-      namespace: namePrefix + namespace + nameSuffix
-    }
-  },
+  deployments: utils.HashedConfigMap(namePrefix + 'deployments' + nameSuffix) + Namespace,
 
-  sealedSecret:: kube.SealedSecret(namePrefix + 'databases' + nameSuffix),
+  sealedSecret:: kube.SealedSecret('databases'),
 
-  databases: self.sealedSecret {
+  databases: self.sealedSecret + Namespace {
     local this = self,
-    local secret = utils.HashedSecret(namePrefix + 'databases' + nameSuffix) {
+    local secret = utils.HashedSecret(namePrefix + $.sealedSecret.metadata.name + nameSuffix) {
       data: $.sealedSecret.spec.encryptedData
     },
     metadata+: {
       name: secret.metadata.name,
-      namespace: namePrefix + namespace + nameSuffix
     },
     spec+: {
       template+: {
@@ -52,27 +57,15 @@ local utils = import '../kube-libsonnet/utils.libsonnet';
     },
   },
 
-  api_svc: kube.Service(namePrefix + name + nameSuffix) {
-    metadata+: {
-      namespace: namePrefix + namespace + nameSuffix,
-      labels+: {
-        "k8s-app": namePrefix + name + nameSuffix
-      },
-    },
+  api_svc: kube.Service($.api.metadata.name) + Namespace + labels {
     target_pod: $.api.spec.template,
     spec+: {
       ports: [{ port: 80, targetPort: 80 }],
-      selector: { "k8s-app": namePrefix + name + nameSuffix },
+      selector: $.api.metadata.labels,
     },
   },
 
-  api: kube.Deployment(namePrefix + name + nameSuffix) {
-    metadata+: {
-      namespace: namePrefix + namespace + nameSuffix,
-      labels+: {
-        "k8s-app": namePrefix + name + nameSuffix
-      },
-    },
+  api: kube.Deployment(namePrefix + name + nameSuffix) + Namespace + labels {
     spec+: {
       replicas: 1,
       template+: {
@@ -84,7 +77,7 @@ local utils = import '../kube-libsonnet/utils.libsonnet';
               envFrom: [
                 {
                   configMapRef: {
-                    name: namePrefix + 'app-config' + nameSuffix,
+                    name: $.api_config.metadata.name,
                   },
                 },
               ],
@@ -128,16 +121,12 @@ local utils = import '../kube-libsonnet/utils.libsonnet';
     },
   },
 
-  api_ing: kube.Ingress(namePrefix + name + nameSuffix) {
+  api_ing: kube.Ingress($.api.metadata.name) + Namespace + labels {
     metadata+: {
       annotations+: {
         "nginx.org/proxy-connect-timeout": "30s",
         "nginx.org/proxy-read-timeout": "20s",
         "nginx.org/client-max-body-size": "4m"
-      },
-      namespace: namePrefix + namespace + nameSuffix,
-      labels+: {
-        "k8s-app": namePrefix + name + nameSuffix
       },
     },
     spec+: {
