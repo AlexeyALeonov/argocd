@@ -12,7 +12,7 @@ function(
   producerImage = null
 )
 
-local params = import '../components/images.json';
+local params = import 'images.json';
 
 (import '../../../base/app.libsonnet') (
   apiImage = if apiImage != null then apiImage else params.apiImage,
