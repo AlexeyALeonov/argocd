@@ -8,6 +8,7 @@ function(
 )
 
 local kube = import '../kube-libsonnet/kube.libsonnet';
+local utils = import '../kube-libsonnet/utils.libsonnet';
 
 {
   // apiImage:: std.extVar('API_IMAGE'),
@@ -24,7 +25,7 @@ local kube = import '../kube-libsonnet/kube.libsonnet';
     },
   },
 
-  deployments: kube.ConfigMap(namePrefix + 'deployments' + nameSuffix) {
+  deployments: utils.HashedConfigMap(namePrefix + 'deployments' + nameSuffix) {
     metadata+: {
       namespace: namePrefix + namespace + nameSuffix
     }
