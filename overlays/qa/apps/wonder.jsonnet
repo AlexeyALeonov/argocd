@@ -1,8 +1,7 @@
 function(
-  namespace = "argocd",
-  name = "wonder",
+  namespace = "hello",
   namePrefix = "qa-",
-  nameSuffix = "-app",
+  nameSuffix = "-wonder",
   targetRevision = "qa",
   apiImage = null,
   uiImage = null,
@@ -15,6 +14,6 @@ local params = import '../params.libsonnet';
   apiImage = if apiImage != null then apiImage else params.apiImage,
   uiImage = if uiImage != null then uiImage else params.uiImage,
   nginxImage = if nginxImage != null then nginxImage else params.nginxImage,
-  namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace, name = name,
+  namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace,
   targetRevision = targetRevision, path = 'overlays/qa/wonder'
 )
