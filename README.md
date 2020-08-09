@@ -148,24 +148,19 @@ The ArgoCD has an ability to sync changes in a [scheduled time windows](https://
 
 ## Changing images in the ArgoCD base Application for environments (will affect all dependent applications)
 ```
-yq -y '.spec.source.kustomize.images |= (. // [] | [(.[] | split("=") | {(.[0]): .[1]})] | add | .uiImage = "nginx:stable-perl" | .apiImage = "nginx" | to_entries | map(.key + "=" + .value))' overlays/staging/base/app/app.yaml > 1.yaml && mv 1.yaml overlays/staging/base/app/app.yaml
-```
-
-## Changing images in the ArgoCD Application of the environment (will affect only this one)
-```
-yq -y '.spec.source.kustomize.images |= (. // [] | [(.[] | split("=") | {(.[0]): .[1]})] | add | .uiImage = "nginx:stable-perl" | .apiImage = "nginx" | to_entries | map(.key + "=" + .value))' overlays/staging/apps/hello/hello.yaml > 1.yaml && mv 1.yaml overlays/staging/apps/hello/hello.yaml
+yq -y '.spec.source.app.images |= (. // [] | [(.[] | split("=") | {(.[0]): .[1]})] | add | .uiImage = "nginx:stable-perl" | .apiImage = "nginx" | to_entries | map(.key + "=" + .value))' overlays/production/apps/values.yaml > 1.yaml && mv 1.yaml overlays/production/apps/values.yaml
 ```
 
 ## Changing images in the base environment (will affect all dependent)
 ```
-pushd overlays/staging/base/hello
-kustomize edit set image apiImage=nginx uiImage=nginx:stable-perl
+pushd overlays/production/base/producer
+kustomize edit set image producerImage=nginx
 popd
 ```
 
 ## Changing images in the end environment (will affect only this one)
 ```
-pushd overlays/staging/hello
+pushd overlays/production/hello
 kustomize edit set image apiImage=nginx uiImage=nginx:stable-perl
 popd
 ```
