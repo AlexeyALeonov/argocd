@@ -1,8 +1,8 @@
 function(
-  namespace = "argocd",
-  name = "auth",
+  namespace = "hello",
+  name = "app",
   namePrefix = "qa-",
-  nameSuffix = "-app",
+  nameSuffix = "-auth",
   targetRevision = "qa",
   authImage = null
 )
