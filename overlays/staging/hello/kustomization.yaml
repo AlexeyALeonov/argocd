@@ -10,4 +10,4 @@ components:
 images:
 - name: apiImage
   newName: nginx
-  newTag: stable-perl
+  newTag: latest
