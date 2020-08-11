@@ -220,7 +220,25 @@ popd
 
 ## Changing images in the end environment (will affect only this one)
 ```
+# to remove the image override from the base customization
+pushd overlays/staging/base/hello
+kustomize edit set image apiImage=apiImage uiImage=uiImage
+popd
+
 pushd overlays/staging/hello
 kustomize edit set image apiImage=nginx uiImage=nginx:stable-perl
+popd
+```
+
+or
+```
+# let's set the image in the base
+pushd overlays/staging/base/hello
+kustomize edit set image apiImage=api:1.3.5 uiImage=ui:2.0.1
+popd
+
+# replace the image from the base to a different one
+pushd overlays/staging/hello
+kustomize edit set image api:1.3.5=nginx:stable-perl ui:2.0.1=nginx:latest
 popd
 ```
