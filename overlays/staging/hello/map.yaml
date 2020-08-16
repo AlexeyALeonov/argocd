@@ -5,7 +5,6 @@ metadata:
 data:
   altGreeting: "Have a pineapple!"
   enableRisky: "true"
-  newParameter: "it should be needed?"
 ---
 apiVersion: v1
 kind: ConfigMap
