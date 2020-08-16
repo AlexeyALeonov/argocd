@@ -8,23 +8,24 @@ The Production (`master` branch) uses the same approach. The app of apps is buil
 The QA (`qa` branch) uses the [jsonnet](https://jsonnet.org/) approach.
 
 # Overview of layers
-## ArgoCD
-The ArgoCD application controller
-```
-.
-├── argocd
-│   ├── argocd-namespace.yaml
-│   ├── Dockerfile
-│   ├── ingress.yaml
-│   ├── kustomization.yaml
-│   ├── README.md
-│   └── upgrade-tools.yaml
-```
-
 ## Cluster
 Contains components of the local cluster.
+
 ```
 ├── cluster
+```
+### The ArgoCD application controller
+```
+│   ├── argocd
+│   │   ├── argocd-namespace.yaml
+│   │   ├── Dockerfile
+│   │   ├── ingress.yaml
+│   │   ├── kustomization.yaml
+│   │   ├── README.md
+│   │   └── upgrade-tools.yaml
+```
+### Kind cluster
+```
 │   ├── kind
 │   │   ├── kind-cluster.yaml
 │   │   ├── kubernetes-dashboard
@@ -39,6 +40,16 @@ Contains components of the local cluster.
 │   │       ├── configMap.yaml
 │   │       ├── kustomization.yaml
 │   │       └── README.md
+```
+### Additional operators
+* [reloader](https://github.com/stakater/Reloader) allows rolling update of deployment when related ConfigMap/Secret has been updated
+```
+│   ├── reloader
+│   │   ├── kustomization.yaml
+│   │   └── namespace.yaml
+```
+* [SealedSecret](https://github.com/bitnami-labs/sealed-secrets) allows deploy the encrypted secrets to the cluster
+```
 │   └── SealedSecrets
 │       └── kustomization.yaml
 ```
@@ -179,7 +190,8 @@ You can read more there: https://kubernetes-sigs.github.io/kustomize/
 │       │           └── test3_wonder_dev.json
 │       ├── hello
 │       │   ├── kustomization.yaml
-│       │   └── map.yaml
+│       │   ├── map.yaml
+│       │   └── test1_ss.json
 │       ├── producer-test
 │       │   └── kustomization.yaml
 │       ├── producer-test3
