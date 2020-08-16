@@ -27,6 +27,7 @@ local labels = {
 
 {
   ns: kube.Namespace(Namespace.metadata.namespace),
+  MAIN_HOSTNAME:: MAIN_HOSTNAME,
 
   api_config: kube.ConfigMap(namePrefix + 'app-config' + nameSuffix) + Namespace {
     data+: {
@@ -132,7 +133,7 @@ local labels = {
     spec+: {
       rules: [
         {
-          host: MAIN_HOSTNAME,
+          host: $.MAIN_HOSTNAME,
           http: {
             paths: [
               {

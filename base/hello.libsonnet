@@ -7,7 +7,7 @@ function(
   nameSuffix = "",
   MAIN_HOSTNAME = "hello.local",
   AUTH_API_URL = null,
-  JWT_AUTH_KEY = "",
+  JWT_AUTH_KEY = null,
   API_HOSTNAME = null,
   UI_HOSTNAME = null
 )
@@ -29,13 +29,14 @@ local labels = {
   },
 };
 
-local authConfig = (import '../components/auth/map.json');
-local authJwtKey = if JWT_AUTH_KEY != "" then JWT_AUTH_KEY else if authConfig.data.JWT_AUTH_KEY != "" then authConfig.data.JWT_AUTH_KEY;
-
 local api = (import 'api.libsonnet') (apiImage = apiImage, namePrefix = namePrefix, nameSuffix = nameSuffix, namespace = namespace) {
+  authConfig:: import '../components/auth/map.json',
+  authJwtKey:: if JWT_AUTH_KEY != null then JWT_AUTH_KEY else if self.authConfig.data.JWT_AUTH_KEY != null then self.authConfig.data.JWT_AUTH_KEY,
+  authApiUrl:: if AUTH_API_URL != null then AUTH_API_URL else if self.authConfig.data.AUTH_API_HOSTNAME != null then "https://" + self.authConfig.data.AUTH_API_HOSTNAME + "/api",
+
   api_config+: {
     data+: {
-      JWT_AUTH_KEY: authJwtKey,
+      [if $.authJwtKey != null then "JWT_AUTH_KEY"]: $.authJwtKey,
     },
   },
 
@@ -45,8 +46,8 @@ local api = (import 'api.libsonnet') (apiImage = apiImage, namePrefix = namePref
 api + {
   ui_config: kube.ConfigMap(namePrefix + 'ui-config' + nameSuffix) + Namespace {
     data+: {
-      [if AUTH_API_URL != null then "AUTH_API_URL"]: AUTH_API_URL,
-      [if JWT_AUTH_KEY != "" then "JWT_AUTH_KEY"]: JWT_AUTH_KEY,
+      [if $.authApiUrl != null then "AUTH_API_URL"]: $.authApiUrl,
+      [if $.authJwtKey != null then "JWT_AUTH_KEY"]: $.authJwtKey,
     },
   },
 
