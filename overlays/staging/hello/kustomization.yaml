@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: staging-hello
 patchesStrategicMerge:
 - map.yaml
+- test1_ss.json
 resources:
 - ../base/hello
 components:
