@@ -11,4 +11,4 @@ kind: ConfigMap
 metadata:
   name: nginx-config
 data:
-  MAIN_HOSTNAME: staging-hello-to-try.local
+  MAIN_HOSTNAME: hello-to-try.dev.local
