@@ -160,7 +160,25 @@ popd
 
 ## Changing images in the end environment (will affect only this one)
 ```
-pushd overlays/production/hello
-kustomize edit set image apiImage=nginx uiImage=nginx:stable-perl
+# to remove the image override from the base customization
+pushd overlays/production/base/producer
+kustomize edit set image producerImage=producerImage
+popd
+
+pushd overlays/production/producer
+kustomize edit set image producerImage=nginx
+popd
+```
+
+or
+```
+# let's set the image in the base
+pushd overlays/production/base/producer
+kustomize edit set image producerImage=producer:1.3.5
+popd
+
+# replace the image from the base to a different one
+pushd overlays/production/producer
+kustomize edit set image producer:1.3.5=nginx:stable-perl
 popd
 ```
