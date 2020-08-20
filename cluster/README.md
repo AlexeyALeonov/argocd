@@ -52,6 +52,7 @@ helm upgrade kube-ops-view -i stable/kube-ops-view --set ingress.enabled=true,rb
 ```
 kustomize build argocd | kubectl apply -f -
 ```
+See [README for details](argocd/README.md)
 
 ## The Argo Rollouts application controller
 [Argo Rollouts](https://argoproj.github.io/argo-rollouts/)

@@ -1,13 +1,14 @@
 # Install the ArgoCD with custom kustomize
-## Build kustomize from source code
+## Build Kustomize from source code
 ```
-docker build argocd\ -f argocd\Dockerfile.kustomize -t kustomize:local
+docker build . -f Dockerfile -t kustomize:local
 ```
+***Notes**: The current customization of ArgoCD installer will build the Kustomize in the init container*
 ## Load the image to the kind cluster
 ```
 kind load docker-image kustomize:local
 ```
-## Install ArgoCD
+## Install/Upgrade ArgoCD
 ```
 ~/kustomize build argocd | kubectl apply -f -
 ```
