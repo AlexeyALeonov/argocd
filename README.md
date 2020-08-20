@@ -9,49 +9,10 @@ The QA (`qa` branch) uses the [jsonnet](https://jsonnet.org/) approach.
 
 # Overview of layers
 ## Cluster
-Contains components of the local cluster.
+Contains [components of the local cluster](cluster/README.md).
 
 ```
 ├── cluster
-```
-### The ArgoCD application controller
-```
-│   ├── argocd
-│   │   ├── argocd-namespace.yaml
-│   │   ├── Dockerfile
-│   │   ├── ingress.yaml
-│   │   ├── kustomization.yaml
-│   │   ├── README.md
-│   │   └── upgrade-tools.yaml
-```
-### Kind cluster
-```
-│   ├── kind
-│   │   ├── kind-cluster.yaml
-│   │   ├── kubernetes-dashboard
-│   │   │   ├── Chart.yaml
-│   │   │   ├── README.md
-│   │   │   ├── requirements.lock
-│   │   │   ├── requirements.yaml
-│   │   │   ├── templates
-│   │   │   │   └── kubernetes-admin.yaml
-│   │   │   └── values.yaml
-│   │   └── nginx-ingress-controller
-│   │       ├── configMap.yaml
-│   │       ├── kustomization.yaml
-│   │       └── README.md
-```
-### Additional operators
-* [reloader](https://github.com/stakater/Reloader) allows rolling update of deployment when related ConfigMap/Secret has been updated
-```
-│   ├── reloader
-│   │   ├── kustomization.yaml
-│   │   └── namespace.yaml
-```
-* [SealedSecret](https://github.com/bitnami-labs/sealed-secrets) allows deploy the encrypted secrets to the cluster
-```
-│   └── SealedSecrets
-│       └── kustomization.yaml
 ```
 
 ## Configurations
@@ -70,6 +31,7 @@ You can read more there: https://kubernetes-sigs.github.io/kustomize/
 
 ### Full tree of the current **staging** layer
 ```
+.
 ├── base
 │   ├── api
 │   │   ├── api.yaml
@@ -136,15 +98,6 @@ You can read more there: https://kubernetes-sigs.github.io/kustomize/
 │       │   ├── hello
 │       │   │   ├── hello.yaml
 │       │   │   └── kustomization.yaml
-│       │   ├── helm
-│       │   │   ├── Chart.yaml
-│       │   │   ├── templates
-│       │   │   │   ├── auth.yaml
-│       │   │   │   ├── central-config.yaml
-│       │   │   │   ├── hello.yaml
-│       │   │   │   ├── producer-test3.yaml
-│       │   │   │   └── producer-test.yaml
-│       │   │   └── values.yaml
 │       │   ├── kustomization.yaml
 │       │   ├── producer-test
 │       │   │   ├── kustomization.yaml
