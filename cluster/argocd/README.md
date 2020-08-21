@@ -1,4 +1,4 @@
-# Install the ArgoCD with custom kustomize
+# Install the ArgoCD with custom Kustomize
 ## Build Kustomize from source code
 ```
 docker build . -f Dockerfile -t kustomize:local
