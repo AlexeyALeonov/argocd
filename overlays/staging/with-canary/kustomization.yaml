@@ -18,6 +18,6 @@ patchesStrategicMerge:
 resources:
 - ../base/hello
 components:
-- ../components/deployments/to-try
+- ../components/deployments/with-canary
 configurations:
 - config.yaml
