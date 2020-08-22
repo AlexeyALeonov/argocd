@@ -4,8 +4,6 @@ namespace: staging-hello-canary
 nameSuffix: -canary
 commonAnnotations:
   note: Canary at staging!
-# patchesStrategicMerge:
-# - map.yaml
 patchesJson6902:
 - target:
     name: api
