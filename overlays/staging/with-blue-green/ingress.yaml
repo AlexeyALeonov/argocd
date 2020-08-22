@@ -16,15 +16,15 @@ spec:
         backend:
           serviceName: ui
           servicePort: 80
-      - path: /api/(.+)
+      - path: /api/(.*)
         backend:
           serviceName: api
           servicePort: 80
-      - path: /preview/(.+)
+      - path: /preview/(.*)
         backend:
-          serviceName: ui
+          serviceName: ui-preview
           servicePort: 80
-      - path: /preview/api/(.+)
+      - path: /preview/api/(.*)
         backend:
           serviceName: api-preview
           servicePort: 80
