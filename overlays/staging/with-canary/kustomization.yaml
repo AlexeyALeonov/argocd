@@ -12,7 +12,8 @@ patchesJson6902:
     version: v1
   path: rename-to-rollout.yaml
 patchesStrategicMerge:
-  - api.yaml
+- api.yaml
+- map.yaml
 resources:
 - ../base/hello
 components:
