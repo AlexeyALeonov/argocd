@@ -13,7 +13,9 @@ patchesJson6902:
   path: rename-to-rollout.yaml
 patchesStrategicMerge:
 - api.yaml
+- nginx.yaml
 - ingress.yaml
+- map.yaml
 resources:
 - ../base/hello
 - preview-service.yaml

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  MAIN_HOSTNAME: hello-with-blue-green.dev.local
+  API_LOCATION: null
+  UI_LOCATION: null
