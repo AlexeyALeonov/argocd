@@ -13,6 +13,6 @@ spec:
       steps:
       - setWeight: 10
       - pause:
-          duration: 5m # 5 minutes
+          duration: 1m # 1 minute
       - setWeight: 20
       - pause: {} # pause indefinitely
