@@ -10,3 +10,16 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui-preview
+spec:
+  selector:
+    deployment: hello-ui
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

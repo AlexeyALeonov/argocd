@@ -11,6 +11,12 @@ patchesJson6902:
     group: apps
     version: v1
   path: rename-to-rollout.yaml
+- target:
+    name: ui
+    kind: Deployment
+    group: apps
+    version: v1
+  path: rename-to-rollout.yaml
 configMapGenerator:
 - files:
   - api.html
