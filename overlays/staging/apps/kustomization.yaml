@@ -8,3 +8,4 @@ resources:
 - to-try
 - producer-test
 - producer-test3
+- with-canary
