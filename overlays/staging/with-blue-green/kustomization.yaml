@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: staging-hello-blue-green
 nameSuffix: -blue-green
 commonAnnotations:
-  note: Blue-Gree at staging!
+  note: Blue-Green at staging!
 patchesJson6902:
 - target:
     name: api
