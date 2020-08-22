@@ -1,0 +1,8 @@
+{
+    "UID": "6b924cc2-d7b1-441d-9c84-0467e79e53d9",
+    "DatabaseProvider": "MySql",
+    "DatabaseInfo": {
+        "Database": "with_canary_dev",
+        "Server": "test"
+    }
+}
