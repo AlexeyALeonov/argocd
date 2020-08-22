@@ -12,9 +12,11 @@ patchesJson6902:
     version: v1
   path: rename-to-rollout.yaml
 patchesStrategicMerge:
-  - api.yaml
+- api.yaml
+- ingress.yaml
 resources:
 - ../base/hello
+- preview-service.yaml
 components:
 - ../components/deployments/with-canary
 configurations:
