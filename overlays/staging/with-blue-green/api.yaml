@@ -19,3 +19,18 @@ spec:
       # stack as soon as the ReplicaSet are completely ready/available.
       # Rollouts can be resumed using: `kubectl argo rollouts resume ROLLOUT`
       autoPromotionEnabled: false
+  template:
+    spec:
+      containers:
+        - name: api
+          volumeMounts:
+            - name: api-content-volume
+              mountPath: /usr/share/nginx/html/index.html
+              subPath: index.html
+      volumes:
+        - name: api-content-volume
+          configMap:
+            name: api-content
+            items:
+              - key: api.html
+                path: index.html

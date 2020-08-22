@@ -11,9 +11,17 @@ patchesJson6902:
     group: apps
     version: v1
   path: rename-to-rollout.yaml
+configMapGenerator:
+- files:
+  - api.html
+  name: api-content
+- files:
+  - ui.html
+  name: ui-content
 patchesStrategicMerge:
 - api.yaml
 - nginx.yaml
+- ui.yaml
 - ingress.yaml
 - map.yaml
 resources:

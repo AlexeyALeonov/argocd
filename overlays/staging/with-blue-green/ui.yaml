@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui
+spec:
+  template:
+    spec:
+      containers:
+        - name: ui
+          volumeMounts:
+            - name: ui-content-volume
+              mountPath: /usr/share/nginx/html/index.html
+              subPath: index.html
+      volumes:
+        - name: ui-content-volume
+          configMap:
+            name: ui-content
+            items:
+              - key: ui.html
+                path: index.html
