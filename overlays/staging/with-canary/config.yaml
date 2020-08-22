@@ -1,0 +1,36 @@
+nameReference:
+- kind: SealedSecret
+  group: bitnami.com
+  version: v1alpha1
+  fieldSpecs:
+  - path: spec/template/spec/volumes/secret/secretName
+    kind: Rollout
+  - path: spec/template/spec/containers/env/valueFrom/secretKeyRef/name
+    kind: Rollout
+  - path: spec/template/spec/initContainers/env/valueFrom/secretKeyRef/name
+    kind: Rollout
+  - path: spec/template/spec/containers/envFrom/secretRef/name
+    kind: Rollout
+  - path: spec/template/spec/initContainers/envFrom/secretRef/name
+    kind: Rollout
+  - path: spec/template/spec/imagePullSecrets/name
+    kind: Rollout
+  - path: spec/template/spec/volumes/projected/sources/secret/name
+    kind: Rollout
+  - path: spec/template/spec/volumes/secret/secretName
+    kind: Rollout
+- kind: ConfigMap
+  version: v1
+  fieldSpecs:
+  - path: spec/template/spec/volumes/configMap/name
+    kind: Rollout
+  - path: spec/template/spec/containers/env/valueFrom/configMapKeyRef/name
+    kind: Rollout
+  - path: spec/template/spec/initContainers/env/valueFrom/configMapKeyRef/name
+    kind: Rollout
+  - path: spec/template/spec/containers/envFrom/configMapRef/name
+    kind: Rollout
+  - path: spec/template/spec/initContainers/envFrom/configMapRef/name
+    kind: Rollout
+  - path: spec/template/spec/volumes/projected/sources/configMap/name
+    kind: Rollout

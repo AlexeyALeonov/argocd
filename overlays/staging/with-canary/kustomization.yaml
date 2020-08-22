@@ -7,15 +7,17 @@ commonAnnotations:
 # patchesStrategicMerge:
 # - map.yaml
 patchesJson6902:
-  - target:
-      name: api
-      kind: Deployment
-      group: apps
-      version: v1
-    path: rename-to-rollout.yaml
+- target:
+    name: api
+    kind: Deployment
+    group: apps
+    version: v1
+  path: rename-to-rollout.yaml
 patchesStrategicMerge:
   - api.yaml
 resources:
 - ../base/hello
 components:
 - ../components/deployments/to-try
+configurations:
+- config.yaml
