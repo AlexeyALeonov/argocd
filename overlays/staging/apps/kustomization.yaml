@@ -9,3 +9,4 @@ resources:
 - producer-test
 - producer-test3
 - with-canary
+- with-blue-green

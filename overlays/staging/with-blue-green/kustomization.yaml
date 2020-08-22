@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: staging-hello-blue-green
+nameSuffix: -blue-green
+commonAnnotations:
+  note: Blue-Gree at staging!
+patchesJson6902:
+- target:
+    name: api
+    kind: Deployment
+    group: apps
+    version: v1
+  path: rename-to-rollout.yaml
+patchesStrategicMerge:
+  - api.yaml
+resources:
+- ../base/hello
+components:
+- ../components/deployments/with-canary
+configurations:
+- config.yaml
+- https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml
