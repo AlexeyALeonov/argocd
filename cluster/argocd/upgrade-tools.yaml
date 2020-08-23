@@ -11,16 +11,16 @@ spec:
         emptyDir: {}
       # 2. Use an init container to download/copy custom binaries into the emptyDir
       initContainers:
-      - name: build-kustomize
-        image: golang:1.14
-        command: [sh, -c]
-        args:
-        - git clone https://github.com/kubernetes-sigs/kustomize.git && cd kustomize/kustomize && GOBIN=/custom-tools/ go install .
-      # - name: copy-kustomize-from-image
-      #   image: kustomize:local
+      # - name: build-kustomize
+      #   image: golang:1.14
       #   command: [sh, -c]
       #   args:
-      #   - cp /usr/local/bin/kustomize /custom-tools/
+      #   - git clone https://github.com/kubernetes-sigs/kustomize.git && cd kustomize/kustomize && GOBIN=/custom-tools/ go install .
+      - name: copy-kustomize-from-image
+        image: kustomize:local
+        command: [sh, -c]
+        args:
+        - cp /usr/local/bin/kustomize /custom-tools/
       # - name: download-tools
       #   image: alpine:3.8
       #   command: [sh, -c]
@@ -51,16 +51,16 @@ spec:
         emptyDir: {}
       # 2. Use an init container to download/copy custom binaries into the emptyDir
       initContainers:
-      - name: build-kustomize
-        image: golang:1.14
-        command: [sh, -c]
-        args:
-        - git clone https://github.com/kubernetes-sigs/kustomize.git && cd kustomize/kustomize && GOBIN=/custom-tools/ go install .
-      # - name: copy-kustomize-from-image
-      #   image: kustomize:local
+      # - name: build-kustomize
+      #   image: golang:1.14
       #   command: [sh, -c]
       #   args:
-      #   - cp /usr/local/bin/kustomize /custom-tools/
+      #   - git clone https://github.com/kubernetes-sigs/kustomize.git && cd kustomize/kustomize && GOBIN=/custom-tools/ go install .
+      - name: copy-kustomize-from-image
+        image: kustomize:local
+        command: [sh, -c]
+        args:
+        - cp /usr/local/bin/kustomize /custom-tools/
       # - name: download-tools
       #   image: alpine:3.8
       #   command: [sh, -c]
@@ -91,16 +91,16 @@ spec:
         emptyDir: {}
       # 2. Use an init container to download/copy custom binaries into the emptyDir
       initContainers:
-      - name: build-kustomize
-        image: golang:1.14
-        command: [sh, -c]
-        args:
-        - git clone https://github.com/kubernetes-sigs/kustomize.git && cd kustomize/kustomize && GOBIN=/custom-tools/ go install .
-      # - name: copy-kustomize-from-image
-      #   image: kustomize:local
+      # - name: build-kustomize
+      #   image: golang:1.14
       #   command: [sh, -c]
       #   args:
-      #   - cp /usr/local/bin/kustomize /custom-tools/
+      #   - git clone https://github.com/kubernetes-sigs/kustomize.git && cd kustomize/kustomize && GOBIN=/custom-tools/ go install .
+      - name: copy-kustomize-from-image
+        image: kustomize:local
+        command: [sh, -c]
+        args:
+        - cp /usr/local/bin/kustomize /custom-tools/
       # - name: download-tools
       #   image: alpine:3.8
       #   command: [sh, -c]
