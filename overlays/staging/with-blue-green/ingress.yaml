@@ -22,7 +22,7 @@ spec:
           servicePort: 80
       - path: /preview/(.*)
         backend:
-          serviceName: ui-preview
+          serviceName: ui
           servicePort: 80
       - path: /preview/api/(.*)
         backend:
