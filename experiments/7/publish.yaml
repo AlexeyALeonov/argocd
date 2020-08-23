@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rollout-experiment-step-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rollout-experiment-step
+  ports:
+  - port: 80
+    targetPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: rollout-experiment-step
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: rollout-experiment-step-service
+              servicePort: 80
+      host: experiments.local

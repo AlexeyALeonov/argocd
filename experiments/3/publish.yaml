@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rollout-background-analysis-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rollout-background-analysis
+  ports:
+  - port: 80
+    targetPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: rollout-background-analysis
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: rollout-background-analysis-service
+              servicePort: 80
+      host: experiments.local

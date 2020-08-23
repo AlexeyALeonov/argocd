@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rollouts-demo-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rollouts-demo
+  ports:
+  - port: 80
+    targetPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: rollouts-demo
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: rollouts-demo-service
+              servicePort: 80
+      host: experiments.local

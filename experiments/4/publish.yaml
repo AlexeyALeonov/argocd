@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rollout-baseline-vs-canary-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rollout-baseline-vs-canary
+  ports:
+  - port: 80
+    targetPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: rollout-baseline-vs-canary
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: rollout-baseline-vs-canary-service
+              servicePort: 80
+      host: experiments.local
