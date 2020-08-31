@@ -5,5 +5,5 @@ patchesStrategicMerge:
 - upgrade-tools.yaml
 resources:
 - argocd-namespace.yaml
-- https://raw.githubusercontent.com/argoproj/argo-cd/v1.7.0-rc1/manifests/install.yaml
 - ingress.yaml
+- github.com/argoproj/argo-cd/manifests/cluster-install?ref=v1.7.2
