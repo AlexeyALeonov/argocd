@@ -86,3 +86,7 @@ The [SealedSecrets](https://github.com/bitnami-labs/sealed-secrets) controller a
 │   └── SealedSecrets
 │       └── kustomization.yaml
 ```
+### Installation
+```
+kustomize build SealedSecrets | kubectl apply -f -
+```
